@@ -28,7 +28,7 @@ class Navi extends Component {
         return (
 
             <Navbar bg="dark" variant="dark" expand="lg">
-                <Navbar.Brand> <Link to="/"> <img src={`${logo}`}  alt="logo" /> </Link> </Navbar.Brand>
+                <Navbar.Brand> <Link to="/"> <img src={`${logo}`} alt="logo" /> </Link> </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
@@ -38,15 +38,12 @@ class Navi extends Component {
                     <Form
                         inline >
                         <FormControl
-                            type="text" 
-                            placeholder="Film Adını Giriniz..." 
-                            className="mr-sm-2" 
-                            onChange = {this.doSearch}
-                            value = {this.state.value}
-                            />
-                        <Button
-                            type="submit"
-                            variant="outline-success">Film Ara</Button>
+                            type="text"
+                            placeholder="Film Adını Giriniz..."
+                            className="mr-sm-2"
+                            onChange={this.doSearch}
+                            value={this.state.value}
+                        />
                     </Form>
                 </Navbar.Collapse>
             </Navbar>

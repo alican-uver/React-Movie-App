@@ -83,6 +83,7 @@ class Home extends Component {
             <div>
                 <Navi callback={this.searchMovies} />
                 <div className = "container">
+                    { this.state.searchWord ? <h2>Search Movie</h2> : <h2>Home Page</h2>  }
                     <Row>
                     {
                         this.state.movies.map((movie, i) => {
@@ -99,7 +100,7 @@ class Home extends Component {
                 </div>
                 {this.state.loading ? <Spinner/> : null }
                 {(this.state.currentPage <= this.state.totalPage && !this.state.loading) ?
-                    <LoadMoreBtn loadMoreMovies = {this.loadMoreMovies} text = "Load More" /> : null
+                    <LoadMoreBtn loadMoreMovies = {this.loadMoreMovies} text = "Sayfa" currentPage = {this.state.currentPage} /> : null
                 }
             </div>
         )

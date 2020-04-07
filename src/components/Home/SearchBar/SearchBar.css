@@ -1,0 +1,10 @@
+.form-control {
+    border: none !important;
+    border-bottom:  2px solid gray !important;
+    border-radius: 0 !important;
+}
+
+::placeholder {
+    text-align: center;
+}
+

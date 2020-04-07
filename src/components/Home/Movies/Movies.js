@@ -4,11 +4,11 @@ import { BASE_IMG } from '../../../config';
 
 const Movies = (props) => {
     return (
-        <Col sm={3} className = "mt-5">
-            <Card>
-                <Card.Img variant="top" src={props.image} />
-            </Card>
-        </Col>
+            <Col sm={3} className="mt-5">
+                <Card>
+                    <Card.Img variant="top" src={props.image} />
+                </Card>
+            </Col>
     )
 }
 

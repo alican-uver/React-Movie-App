@@ -1,20 +1,22 @@
 import React from 'react';
-import { Button, Row, Col, Badge } from 'react-bootstrap';
+import { Button, Row, Col, Badge, Container } from 'react-bootstrap';
 
 const LoadMoreBtn = (props) => {
     return (
         <div>
-            <Row className="my-4">
-                <Col className="text-center">
-                    <Button variant="primary"
-                        className = "px-3"
-                        onClick={props.loadMoreMovies}
+            <Container>
+                <Row className="my-4">
+                    <Col className="text-center">
+                        <Button variant="primary" block
+                            size="lg"
+                            className="px-3"
+                            onClick={props.loadMoreMovies}
                         >
-                        {props.text} <Badge variant="light">{props.currentPage}</Badge>
-                        <span className="sr-only">unread messages</span>
-                    </Button>
-                </Col>
-            </Row>
+                            {props.text} <Badge variant="light">{props.currentPage}</Badge>
+                        </Button>
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 }

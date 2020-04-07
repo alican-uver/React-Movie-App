@@ -85,7 +85,7 @@ class Home extends Component {
             <div>
                 <SearchBar callback={this.searchMovies} />
                 <div className = "container fadeEffect">
-                    { this.state.searchWord ? <h2>{this.state.searchWord}</h2> : <h2>Popüler Filmler</h2>  }
+                    { this.state.searchWord ? <h2>Aranan Film</h2> : <h2>Popüler Filmler</h2>  }
                     <Row>
                     {
                         this.state.movies.map((movie, i) => {

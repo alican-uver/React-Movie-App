@@ -10,7 +10,7 @@ class Movie extends Component {
         movie: [],
         loader: false,
         actors: null,
-        directors: null
+        directors: []
     }
 
     
@@ -23,16 +23,16 @@ class Movie extends Component {
     getMovieWithId = endPoint => {
         fetch(endPoint)
         .then(response => response.json())
-        .then((movies) => {
-            console.log(movies)
+        .then((movie) => {
+            console.log(movie)
 
-            if (movies.status_code) { // For error the request
+            if (movie.status_code) { // For error the request
                 this.setState({
                     loader: false
                 })
             }
             else { // İf success the request
-                this.setState({ movies }, () => {
+                this.setState({ movie }, () => {
                     let endPoint = `${BASE_URL}/movie/${this.props.match.params.movieId}/credits?api_key=${API_KEY}`;
                     fetch(endPoint)
                     .then(response => response.json())
@@ -42,7 +42,7 @@ class Movie extends Component {
                         console.log(filterDirector)
                         this.setState({
                             actors: credits.cast,
-                            directors: filterDirector,
+                            directors: filterDirector[0].name,
                             loader: false     
                         })
                     })
@@ -52,10 +52,14 @@ class Movie extends Component {
     }
   
     render() {
-        console.log(this.state)
+        console.log(this.state.movie)
         return (
             <div>
-            <MovieInfo />
+            <MovieInfo
+                movieInfo = {this.state.movie}
+                actors= {this.state.actors}
+                directors = {this.state.directors}
+            />
             <Spinner />
             </div>
         )

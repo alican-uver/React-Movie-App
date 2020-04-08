@@ -1,0 +1,17 @@
+.movieInfo {
+    background-color: rgba(0, 0, 0, 0.342);
+}
+
+meter::-webkit-meter-bar {
+    background: #fff;
+    width: 150px;
+  }
+  meter::-webkit-meter-optimum-value {
+    background: linear-gradient(to bottom, #16d47b) !important;
+  }
+  meter::-webkit-meter-suboptimum-value {
+    background: linear-gradient(to bottom, #fbb450) !important;
+  }
+  meter::-webkit-meter-even-less-good-value {
+    background: linear-gradient(to bottom, #ee5f5b) !important;
+  }

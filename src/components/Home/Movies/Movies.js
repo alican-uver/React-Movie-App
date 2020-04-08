@@ -6,7 +6,7 @@ const Movies = (props) => {
     return (
         <Col sm={3} className="mt-5">
             { props.clickable ?
-                <Link to={{ pathname: `${props.movieId}`, movieName: `${props.movieName}` }}>
+                <Link to = {{ pathname: `${props.movieId}`, movieName: `${props.movieName}` }}>
                     <Card>
                         <Card.Img variant="top" src={props.image} alt = "movieImg" />
                     </Card>

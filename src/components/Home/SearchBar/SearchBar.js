@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Form, Container } from 'react-bootstrap';
 import './SearchBar.css'
 
-
 class SearchBar extends Component {
 
     state = {
@@ -27,17 +26,17 @@ class SearchBar extends Component {
     render() {
         console.log(this.state.value)
         return (
-            <div className = "mt-4">
-            <Container>
-            <Form.Group>
-                <Form.Control 
-                size="lg" 
-                type="text" 
-                placeholder="Lütfen Aradığınız Filmin Adını Giriniz..."
-                onChange = {this.getValue}
-                />
-            </Form.Group>
-            </Container>
+            <div className="mt-4">
+                <Container>
+                    <Form.Group>
+                        <Form.Control
+                            size="lg"
+                            type="text"
+                            placeholder="Lütfen Aradığınız Filmin Adını Giriniz..."
+                            onChange={this.getValue}
+                        />
+                    </Form.Group>
+                </Container>
             </div>
         )
     }

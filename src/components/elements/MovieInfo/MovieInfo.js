@@ -37,11 +37,11 @@ const MovieInfo = (props) => {
         </Col>
         <Col sm={6} className = "movieInfo p-4">
           <h1 className = "display-4">{props.movieInfo.title} </h1>
-          <h5>Overview</h5>
+          <h5>Açıklama</h5>
           <p>{props.movieInfo.overview} </p>
           <meter min = "0" max = "100" optimum = "100" low = "40" high = "70" value = { props.movieInfo.vote_average * 10}></meter>
-          <h3 className ="mb-2"> Average:  {props.movieInfo.vote_average} </h3>
-          <h2>Director: {props.directors}  </h2>  
+          <h3 className ="mb-2"> Imdb:  {props.movieInfo.vote_average} </h3>
+          <h2>Yönetmen: {props.directors}  </h2>  
           <div><i className="fas fa-film fa-6x"></i> </div>
         </Col>
       </Row>

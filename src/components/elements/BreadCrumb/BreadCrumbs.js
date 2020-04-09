@@ -7,7 +7,7 @@ const BreadCrumbs = (props) => {
         <Breadcrumb>
             <Breadcrumb.Item>
             <Link to ="/">
-                Home
+                Anasayfa
             </Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item active>

@@ -13,8 +13,8 @@ class Navi extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                        <Nav.Link as={Link} to="/popTvShows">Popular Tv Shows</Nav.Link>
-                        <Nav.Link as={Link} to="/PopPeoples">Populer People</Nav.Link>
+                        <Nav.Link as={Link} to="/popTvShows">Popüler Tv Şovları</Nav.Link>
+                        <Nav.Link as={Link} to="/PopPeoples">Popüler Oyuncular</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>

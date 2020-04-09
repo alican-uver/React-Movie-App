@@ -4,7 +4,7 @@ import ImageFrame from '../elements/ImageFrame/ImageFrame';
 import Spinner from '../elements/Spinner/Spinner';
 import LoadMoreBtn from '../elements/LoadMore/LoadMoreBtn'
 import SearchBar from '../elements/SearchBar/SearchBar';
-import { Row, Container } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import no_img from '../elements/img/no_image.jpg';
 import '../../index.css'
 
@@ -85,7 +85,9 @@ class Home extends Component {
                 <SearchBar callback={this.searchMovies} />
                 <Container className="fadeEffect">
                     <Row>
-                        {this.state.searchWord ? <h2>Aranan Film</h2> : <h2>Popüler Filmler</h2>}
+                        <Col sm = {6} className = "offset-sm-3 text-center">
+                            {this.state.searchWord ? <h2 className = "text-capitalize">{this.state.searchWord} için bulunan sonuçlar </h2> : <h2>Popüler Filmler</h2>}
+                        </Col>
                     </Row>
                     <Row>
                         {

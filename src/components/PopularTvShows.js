@@ -4,7 +4,7 @@ const PopularTvShows = () => {
     return (
 
         <div>
-            This is PopularTvShows Page
+            Popüler Tv Şovları
         </div>
     )
 }

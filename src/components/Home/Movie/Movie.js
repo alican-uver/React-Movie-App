@@ -4,12 +4,13 @@ import Spinner from '../Spinner/Spinner';
 import MovieInfo from '../MovieInfo/MovieInfo';
 
 
+
 class Movie extends Component {
 
     state = {
         movie: [],
         loader: false,
-        actors: null,
+        actors: [],
         directors: []
     }
 

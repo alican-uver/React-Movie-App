@@ -5,7 +5,7 @@ import Movies from './Movies/Movies';
 import Spinner from './Spinner/Spinner';
 import LoadMoreBtn from './LoadMore/LoadMoreBtn'
 import SearchBar from './SearchBar/SearchBar';
-import { Row } from 'react-bootstrap';
+import { Row, Container } from 'react-bootstrap';
 import no_img from './img/no_image.jpg';
 import '../../index.css'
 
@@ -84,25 +84,27 @@ class Home extends Component {
         return (
             <div>
                 <SearchBar callback={this.searchMovies} />
-                <div className = "container fadeEffect">
-                    { this.state.searchWord ? <h2>Aranan Film</h2> : <h2>Popüler Filmler</h2>  }
+                <Container className="fadeEffect">
                     <Row>
-                    {
-                        this.state.movies.map((movie, i) => {
-                            return <Movies
-                                key={i}
-                                image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
-                                clickable={true}
-                                movieId={movie.id}
-                                movieName={movie.original_title}
-                            />
-                        })
-                    }
+                        {this.state.searchWord ? <h2>Aranan Film</h2> : <h2>Popüler Filmler</h2>}
                     </Row>
-                </div>
-                {this.state.loading ? <Spinner/> : null }
+                    <Row>
+                        {
+                            this.state.movies.map((movie, i) => {
+                                return <Movies
+                                    key={i}
+                                    image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
+                                    clickable={true}
+                                    movieId={movie.id}
+                                    movieName={movie.original_title}
+                                />
+                            })
+                        }
+                    </Row>
+                </Container>
+                {this.state.loading ? <Spinner /> : null}
                 {(this.state.currentPage <= this.state.totalPage && !this.state.loading) ?
-                    <LoadMoreBtn loadMoreMovies = {this.loadMoreMovies} text = "Sayfa" currentPage = {this.state.currentPage} /> : null
+                    <LoadMoreBtn loadMoreMovies={this.loadMoreMovies} text="Sayfa" currentPage={this.state.currentPage} /> : null
                 }
             </div>
         )

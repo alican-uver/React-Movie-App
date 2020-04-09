@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from './components/Home/Home'
-import PopularTvShows from './components/PopularTvShows';
-import PopularPeoples from './components/PopularPeoples';
-import Navi from './components/Navi/Navi';
-import Movie from './components/Home/Movie/Movie';
-import NotFound from './components/NotFound/NotFound';
+import Home from '../Home/Home';
+import PopularTvShows from '../PopularTvShows';
+import PopularPeoples from '../PopularPeoples';
+import Navi from '../Navi/Navi';
+import Movie from '../Home/Movie/Movie';
+import NotFound from '../NotFound/NotFound';
 
 
 const App = () => {

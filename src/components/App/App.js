@@ -4,7 +4,7 @@ import Home from '../Home/Home';
 import PopularTvShows from '../PopularTvShows';
 import PopularPeoples from '../PopularPeoples';
 import Navi from '../Navi/Navi';
-import Movie from '../Home/Movie/Movie';
+import Movie from '../Movie/Movie';
 import NotFound from '../NotFound/NotFound';
 
 

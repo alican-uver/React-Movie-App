@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BASE_URL, API_KEY, BASE_IMG} from '../config';
-import Movies from './Home/Movies/Movies';
-import  no_img from './Home/img/no_image.jpg';
+import ImageFrame from './elements/ImageFrame/ImageFrame';
+import  no_img from './elements/img/no_image.jpg';
 import { Row, Container } from 'react-bootstrap';
 
 class PopularPeoples extends Component {
@@ -38,7 +38,7 @@ class PopularPeoples extends Component {
                 {
                    this.state.persons.map((person, i) => {
                        return (
-                           <Movies 
+                           <ImageFrame 
                             key = {i}
                             image={person.profile_path ? `${BASE_IMG}${person.profile_path}` : `${no_img}`}
                             clickable = {false}

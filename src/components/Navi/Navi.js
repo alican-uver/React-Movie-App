@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import logo from '../Home/img/icon.png';
+import logo from '../elements/img/icon.png';
 
 
 class Navi extends Component {
@@ -25,7 +25,7 @@ class Navi extends Component {
 export default Navi;
 
 
-// Maybe I can make under Navi component SearchBar! 
+// Maybe I can make under Navi component SearchBar!
 // <Form
 // inline >
 // <FormControl

@@ -12,15 +12,15 @@ const Movies = (props) => {
                     </Card>
                 </Link>
                 : 
-                <Card className = "bg-dark text-light">
+                <Card className = "bg-dark text-light" style = {{maxHeight: "500px"}}>
                     <Card.Img variant="top" src={props.image} alt="movieImg" />
                     <Card.Body>
                         <Card.Text>
-                            <span> Adı: {props.name} </span>
+                            <p> Adı: {props.name} </p>
                         </Card.Text>
                     </Card.Body>
                 </Card>
-            }
+            }            
         </div>
     )
 }

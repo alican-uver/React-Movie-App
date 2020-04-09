@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { BASE_URL, API_KEY } from '../../../config';
-import Spinner from '../Spinner/Spinner';
-import MovieInfo from '../MovieInfo/MovieInfo';
+import { BASE_URL, API_KEY } from '../../config';
+import Spinner from '../elements/Spinner/Spinner';
+import MovieInfo from '../elements/MovieInfo/MovieInfo';
 
 
 

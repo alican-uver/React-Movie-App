@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { BASE_URL, API_KEY, BASE_IMG } from '../../config'
-import Navi from '../Navi/Navi';
-import Movies from './Movies/Movies';
-import Spinner from './Spinner/Spinner';
-import LoadMoreBtn from './LoadMore/LoadMoreBtn'
-import SearchBar from './SearchBar/SearchBar';
+import ImageFrame from '../elements/ImageFrame/ImageFrame';
+import Spinner from '../elements/Spinner/Spinner';
+import LoadMoreBtn from '../elements/LoadMore/LoadMoreBtn'
+import SearchBar from '../elements/SearchBar/SearchBar';
 import { Row, Container } from 'react-bootstrap';
-import no_img from './img/no_image.jpg';
+import no_img from '../elements/img/no_image.jpg';
 import '../../index.css'
 
 
@@ -91,7 +90,7 @@ class Home extends Component {
                     <Row>
                         {
                             this.state.movies.map((movie, i) => {
-                                return <Movies
+                                return <ImageFrame
                                     key={i}
                                     image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
                                     clickable={true}

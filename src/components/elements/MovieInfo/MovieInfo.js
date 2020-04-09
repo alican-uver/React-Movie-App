@@ -1,10 +1,10 @@
 import React from "react";
-import Actors from "../../Actors/Actors";
+import Actors from '../Actors/Actors';
 import { Row, Col, Container } from "react-bootstrap";
-import BreadCrumbs from "./BreadCrumb/BreadCrumbs";
+import BreadCrumbs from "../BreadCrumb/BreadCrumbs";
 import { BASE_IMG, IMAGE_BASE_URL, BACKDROP_SIZE } from "../../../config";
 import './MovieInfo.css';
-import Movies from "../Movies/Movies";
+import ImageFrame from "../ImageFrame/ImageFrame";
 import no_img from '../img/no_image.jpg';
 
 
@@ -42,22 +42,23 @@ const MovieInfo = (props) => {
           <meter min = "0" max = "100" optimum = "100" low = "40" high = "70" value = { props.movieInfo.vote_average * 10}></meter>
           <h3 className ="mb-2"> Average:  {props.movieInfo.vote_average} </h3>
           <h2>Director: {props.directors}  </h2>  
+          <div><i className="fas fa-film fa-6x"></i> </div>
         </Col>
       </Row>
       <Container>
         <Row>
           {
             props.actors.map((actor, i) => {
-              return <Movies 
+              return <Actors 
                     key = {i}
                     name = {actor.name}
                     image={actor.profile_path ? `${BASE_IMG}${actor.profile_path}` : `${no_img}`} 
+                    character = {actor.character}
                  />
             })
           }
         </Row>
         </Container>
-       <Actors />
     </Container>
   );
 };

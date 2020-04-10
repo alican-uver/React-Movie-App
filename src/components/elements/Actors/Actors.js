@@ -4,9 +4,9 @@ import './Actors.css';
 
 const Actors = (props) => {
     return (
-              <Col sm = {3} className = "mt-2" >
+              <Col sm = {2} className = "mt-2" >
                     <Card className = "actors-card">
-                        <Card.Img variant="top" src={props.image}  />
+                        <Card.Img variant="top" src={props.image}   />
                         <Card.Body>
                             <p>Karakter Adı: <span>{props.character}</span></p>
                             <p>Oyuncu Adı: <span>{props.name}</span></p>

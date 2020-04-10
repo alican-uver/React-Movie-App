@@ -5,11 +5,9 @@ import { Link } from 'react-router-dom';
 const BreadCrumbs = (props) => {
     return (
         <Breadcrumb>
-            <Breadcrumb.Item>
             <Link to ="/">
-                Anasayfa
+                Anasayfa / 
             </Link>
-            </Breadcrumb.Item>
             <Breadcrumb.Item active>
                 {props.title}
             </Breadcrumb.Item>

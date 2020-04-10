@@ -24,7 +24,7 @@ class SearchBar extends Component {
     }
 
     render() {
-        console.log(this.state.value)
+        // console.log(this.state.value)
         return (
             <div className="mt-4">
                 <Container>

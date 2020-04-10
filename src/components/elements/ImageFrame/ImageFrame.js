@@ -1,10 +1,11 @@
 import React from 'react';
 import { Col, Card, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
  
-const Movies = (props) => {
+const ImageFrame = (props) => {
     return (
-        <div className = "col-sm-3 mt-5">
+        <div className = "col-sm-3 mt-5 fadeEffect">
             {props.clickable ?
                 <Link to={{ pathname: `${props.movieId}`, movieName: `${props.movieName}` }}>
                     <Card>
@@ -25,4 +26,10 @@ const Movies = (props) => {
     )
 }
 
-export default Movies;
+ImageFrame.propTypes = {
+    image : PropTypes.string,
+    movieId : PropTypes.number, 
+    movieName : PropTypes.string 
+}
+
+export default ImageFrame;

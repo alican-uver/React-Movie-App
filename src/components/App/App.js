@@ -6,12 +6,14 @@ import PopularPeoples from '../PopularPeoples';
 import Navi from '../Navi/Navi';
 import Movie from '../Movie/Movie';
 import NotFound from '../NotFound/NotFound';
+import ScrollTop from '../elements/ScrollTop/ScrollTop';
 
 
 const App = () => {
 
     return (
         <Router>
+            <ScrollTop>
             <React.Fragment>
                 <Navi />
                 <Switch>
@@ -22,6 +24,7 @@ const App = () => {
                     <Route component = {NotFound} />
                 </Switch>
             </React.Fragment>
+            </ScrollTop>
         </Router>
     )
 

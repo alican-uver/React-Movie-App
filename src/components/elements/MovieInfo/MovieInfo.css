@@ -1,3 +1,14 @@
 .movieInfo {
     background-color: rgba(0, 0, 0, 0.644);
 }
+.breadcrumb {
+    margin-bottom: 0 !important;
+    background-color: #fff !important;    
+}
+
+.breadcrumb a {
+    text-decoration: none !important;
+}
+
+
+

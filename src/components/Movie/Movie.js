@@ -15,17 +15,20 @@ class Movie extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
+        // console.log(this.props);
         let endPoint = `${BASE_URL}/movie/${this.props.match.params.movieId}?api_key=${API_KEY}&language=tr`
         this.getMovieWithId(endPoint);
         this.getDirectorsAndActors();
+        this.setState({
+            loader: true
+        })
     }
 
     getMovieWithId = (endPoint) => {
         fetch(endPoint)
             .then(response => response.json())
             .then((movie) => {
-                console.log(movie);
+                // console.log(movie);
                 
                 if (movie.overview !== "") {
                     this.setState({
@@ -50,9 +53,9 @@ class Movie extends Component {
         fetch(endPoint)
             .then(response => response.json())
             .then((credits) => {
-                console.log(credits)
+                // console.log(credits)
                 const filterDirector = credits.crew.filter(person => person.job === "Director"); // filter directors from all employees
-                console.log(filterDirector)
+                // console.log(filterDirector)
                 this.setState({
                     actors: credits.cast,
                     directors: filterDirector[0].name,
@@ -64,12 +67,17 @@ class Movie extends Component {
     render() {
         return (
             <div>
-                <MovieInfo
+                {
+                    this.state.loader ? <Spinner /> : null
+                }
+                {   this.state.movie ? 
+                    <MovieInfo
                     movieInfo={this.state.movie}
                     actors={this.state.actors}
                     directors={this.state.directors}
-                />
-                <Spinner />
+                /> : null
+                }
+                
             </div>
         )
     }

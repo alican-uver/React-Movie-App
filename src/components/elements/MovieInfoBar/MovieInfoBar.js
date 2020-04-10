@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import './MovieInfoBar.css';
 
 const MovieInfoBar = (props) => {
     
     const formatNumber = (number) => { 
+
       if (number === 0) {
         return "Bilgi Yok"
       }
@@ -22,11 +23,10 @@ const MovieInfoBar = (props) => {
     } 
     
     return (
-        <div className = "bg-light pt-3 d-flex justify-content-around align-items-center text-center">
+        <div className = "pt-3 d-flex justify-content-around align-items-center text-center movie-bar">
             <div>
                 <i className="fas fa-money-bill-alt fa-3x mb-2"></i>
                 <h5>Bütçe: <span> {formatNumber(props.revenue)} </span> </h5>
-
             </div>
             <div>
                 <i className="fas fa-hand-holding-usd fa-3x mb-2"></i>
@@ -36,7 +36,6 @@ const MovieInfoBar = (props) => {
                 <i className="fas fa-hourglass-half fa-3x mb-2"></i>
                 <h5>Film Süresi: <span>{formatTime(props.runtime)}</span> </h5>
             </div>
-           
         </div>
     )
 }

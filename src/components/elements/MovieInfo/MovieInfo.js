@@ -16,9 +16,6 @@ const MovieInfo = (props) => {
         return date;
     }
    
-    let poster = props.movieInfo.poster_path
-    console.log(poster);
-    
     console.log(props.movieInfo)
     return (
         <Container fluid="xs" className = "fadeEffect">
@@ -73,6 +70,11 @@ const MovieInfo = (props) => {
                 </Col>
             </Row>
             <Container>
+                    <Row>
+                        <Col sm = {12}>
+                            <h1 className= "text-center py-4">Oyuncular</h1>
+                        </Col>
+                    </Row>
                 <Row>
                     {
                         props.actors.map((actor, i) => {
@@ -90,10 +92,4 @@ const MovieInfo = (props) => {
     );
 };
 
-
-
-
 export default MovieInfo;
-
-
-// <meter min = "0" max = "100" optimum = "100" low = "40" high = "70" value = { props.movieInfo.vote_average * 10}></meter>

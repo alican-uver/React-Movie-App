@@ -1,5 +1,19 @@
 .actors-card {
-    background-color: rgba(19, 9, 9, 0.212) !important;
-    height: 420px;
+    background-color: rgba(0, 0, 0, 0.925) !important;
+    height: 380px;
     border-radius: 5px !important;
+    text-align: center;
+    border: 5px solid black !important;
+}
+
+.actor-name {
+    font-size: 16px;
+    letter-spacing: .3px;
+    color: #fff;
+}
+
+.actor-character {
+    font-size: 13px;
+    letter-spacing: .3px;
+    color: #fff;
 }

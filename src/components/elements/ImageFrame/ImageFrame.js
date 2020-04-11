@@ -7,7 +7,7 @@ const ImageFrame = (props) => {
     return (
         <div className = "col-sm-3 mt-5 fadeEffect">
             {props.clickable ?
-                <Link to={{ pathname: `${props.movieId}`, movieName: `${props.movieName}` }}>
+                <Link to={{ pathname: `${props.movieId}`, movieName: `${props.movieName}`, searchWord: `${props.searchWord}` }}>
                     <Card>
                         <Card.Img variant="top" src={props.image} alt="movieImg" />
                     </Card>

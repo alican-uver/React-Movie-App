@@ -66,7 +66,7 @@ class Movie extends Component {
 
     render() {
         return (
-            <div>
+            <>
                 {
                     this.state.loader ? <Spinner /> : null
                 }
@@ -75,10 +75,11 @@ class Movie extends Component {
                     movieInfo={this.state.movie}
                     actors={this.state.actors}
                     directors={this.state.directors}
+                    searchWord = {this.props.location.searchWord}
                 /> : null
                 }
                 
-            </div>
+            </>
         )
     }
 }

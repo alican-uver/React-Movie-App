@@ -5,6 +5,7 @@ import BreadCrumbs from "../BreadCrumb/BreadCrumbs";
 import { BASE_IMG, IMAGE_BASE_URL, BACKDROP_SIZE } from "../../../config";
 import './MovieInfo.css';
 import no_img from '../img/no_image.jpg';
+import no_img_bg from '../img/bg-not-found.jpg';
 import MovieInfoBar from "../MovieInfoBar/MovieInfoBar";
 
 
@@ -21,7 +22,10 @@ const MovieInfo = (props) => {
         <Container fluid="xs" className = "fadeEffect">
             <Row>
                 <Col sm={12} >
-                    <BreadCrumbs title={props.movieInfo.title} />
+                    <BreadCrumbs 
+                    title={props.movieInfo.title} 
+                    searchWord = {props.searchWord}                
+                    />
                 </Col>
             </Row>
 
@@ -30,16 +34,23 @@ const MovieInfo = (props) => {
                 style={{
                     backgroundImage: props.movieInfo.backdrop_path
                         ? `url("${IMAGE_BASE_URL}${BACKDROP_SIZE}${props.movieInfo.backdrop_path}")`
-                        : "#000",
-                    backgroundSize: "cover"
+                        : `url(${no_img_bg})`
                 }}
             >
                 <Col sm={4} className="pr-0">
-                    <img
+                    {
+                        props.movieInfo.poster_path ? 
+                        <img 
                         src={`${BASE_IMG}${props.movieInfo.poster_path}`}
                         alt="movieImg"
                         className="img-fluid"
-                    />
+                        /> : 
+                        <img 
+                        src={`${no_img_bg}`}
+                        alt="movieImg"
+                        className="img-fluid"
+                        />
+                    }
                 </Col>
                 <Col sm={5} className="movieInfo p-4">
                     <h1 className="display-4">{props.movieInfo.title} </h1>

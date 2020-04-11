@@ -20,7 +20,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        const endPoint = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+        const endPoint = `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=1`;
         this.getRequest(endPoint);
 
         this.setState({
@@ -34,15 +34,15 @@ class Home extends Component {
         let endPoint = "";
         this.setState({
             movies: [],
-            loading: true,
-            searchWord
+            searchWord,
+            loading: true
         });
 
         if (this.state.searchWord === "") {
-            endPoint = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+            endPoint = `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=1`;
         }
         else {
-            endPoint = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${this.state.searchWord}&language=en-US`
+            endPoint = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${this.state.searchWord}`
         }
 
         this.getRequest(endPoint)
@@ -55,7 +55,7 @@ class Home extends Component {
         });
 
         if (this.state.searchWord === "") {
-            endPoint = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=${this.state.currentPage + 1}`;
+            endPoint = `${BASE_URL}/movie/popular?api_key=${API_KEY}&page=${this.state.currentPage + 1}`;
         }
         else {
             endPoint = `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${this.state.searchWord}&page=${this.state.currentPage + 1}`
@@ -81,7 +81,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <>
                 <SearchBar callback={this.searchMovies} />
                 <Container className="fadeEffect">
                     <Row>
@@ -98,6 +98,7 @@ class Home extends Component {
                                     clickable={true}
                                     movieId={movie.id}
                                     movieName={movie.original_title}
+                                    searchWord = {this.state.searchWord}
                                 />
                             })
                         }
@@ -107,7 +108,7 @@ class Home extends Component {
                 {(this.state.currentPage <= this.state.totalPage && !this.state.loading) ?
                     <LoadMoreBtn loadMoreMovies={this.loadMoreMovies} text="Sayfa" currentPage={this.state.currentPage} /> : null
                 }
-            </div>
+            </>
         )
     }
 }

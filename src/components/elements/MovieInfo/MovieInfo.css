@@ -10,5 +10,11 @@
     text-decoration: none !important;
 }
 
+.movieInfoContainer {
+    background-size: cover;
+    background-repeat: no-repeat !important;
+    min-height: 100vh;
+}
+
 
 

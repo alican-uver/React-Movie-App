@@ -8,6 +8,8 @@ import Movie from '../Movie/Movie';
 import NotFound from '../NotFound/NotFound';
 import ScrollTop from '../elements/ScrollTop/ScrollTop';
 
+import PersonInfo from '../PersonInfo/PersonInfo';
+
 
 const App = () => {
 
@@ -21,6 +23,7 @@ const App = () => {
                     <Route exact path="/popTvShows" component={PopularTvShows} />
                     <Route exact path="/popPeoples" component={PopularPeoples} />
                     <Route exact path = "/:movieId" component = {Movie} />
+                    <Route exact path = "/:movieId/:personId" component = {PersonInfo} />
                     <Route component = {NotFound} />
                 </Switch>
             </React.Fragment>

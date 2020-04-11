@@ -19,7 +19,7 @@ const MovieInfo = (props) => {
    
     console.log(props.movieInfo)
     return (
-        <Container fluid="xs" className = "fadeEffect">
+        <Container fluid="xs">
             <Row>
                 <Col sm={12} >
                     <BreadCrumbs 
@@ -30,14 +30,14 @@ const MovieInfo = (props) => {
             </Row>
 
             <Row
-                className="p-5 justify-content-md-center text-light movieInfoContainer"
+                className="p-5 justify-content-md-center text-light movieInfoContainer "
                 style={{
                     backgroundImage: props.movieInfo.backdrop_path
                         ? `url("${IMAGE_BASE_URL}${BACKDROP_SIZE}${props.movieInfo.backdrop_path}")`
                         : `url(${no_img_bg})`
                 }}
             >
-                <Col sm={4} className="pr-0">
+                <Col sm={4} className="pr-0 animated fadeInLeftBig">
                     {
                         props.movieInfo.poster_path ? 
                         <img 
@@ -52,7 +52,7 @@ const MovieInfo = (props) => {
                         />
                     }
                 </Col>
-                <Col sm={5} className="movieInfo p-4">
+                <Col sm={5} className="movieInfo p-4 animated fadeInRightBig">
                     <h1 className="display-4">{props.movieInfo.title} </h1>
                     <h5 className="mb-4">Yayınlanma Tarihi: <span>{editReleaseDate(props.movieInfo.release_date)}</span></h5>
                     <h5>Açıklama</h5>
@@ -94,6 +94,8 @@ const MovieInfo = (props) => {
                                 name={actor.name}
                                 image={actor.profile_path ? `${BASE_IMG}${actor.profile_path}` : `${no_img}`}
                                 character={actor.character}
+                                personId = {actor.id}
+                                movieId = {props.movieInfo.id}
                             />
                         })
                     }

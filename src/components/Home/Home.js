@@ -6,7 +6,7 @@ import LoadMoreBtn from '../elements/LoadMore/LoadMoreBtn'
 import SearchBar from '../elements/SearchBar/SearchBar';
 import { Row, Col, Container } from 'react-bootstrap';
 import no_img from '../elements/img/no_image.jpg';
-import '../../index.css'
+import '../../index.css';
 
 
 class Home extends Component {
@@ -83,7 +83,7 @@ class Home extends Component {
         return (
             <>
                 <SearchBar callback={this.searchMovies} />
-                <Container className="fadeEffect">
+                <Container className = "animated zoomIn" >
                     <Row>
                         <Col sm = {6} className = "offset-sm-3 text-center">
                             {this.state.searchWord ? <h2 className = "text-capitalize">{this.state.searchWord} için bulunan sonuçlar </h2> : <h2>Popüler Filmler</h2>}

@@ -29,7 +29,7 @@ class Home extends Component {
     };
 
     searchMovies = searchWord => { // This function trigger the Get Request Function
-        console.log(searchWord);
+        // console.log(searchWord);
 
         let endPoint = "";
         this.setState({

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Actors = (props) => {
     return (
               <Col sm = {2} className = "mt-2" >
-                    <Link to = {{pathname :`${props.movieId}/${props.personId}`}}>
+                    <Link to = {{pathname :`${props.movieId}/${props.personId}`, actorName : `${props.name}`}}>
                     <Card className = "actors-card">
                         <Card.Img variant="top" src={props.image}/>
                         <Card.Body className = "p-0 pt-4">

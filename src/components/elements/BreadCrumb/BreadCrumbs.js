@@ -1,6 +1,7 @@
 import React from 'react';
 import { Breadcrumb } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 const BreadCrumbs = (props) => {
 
@@ -22,5 +23,11 @@ const BreadCrumbs = (props) => {
         </Breadcrumb>
     )
 }
+
+BreadCrumbs.defaultProps = {
+    title: 'Film Adı Gönderilmedi'
+  };
+
+
 
 export default BreadCrumbs;

@@ -15,11 +15,6 @@ const ImageFrame = (props) => {
                 : 
                 <Card className = "bg-dark text-light" style = {{maxHeight: "500px"}}>
                     <Card.Img variant="top" src={props.image} alt="movieImg" />
-                    <Card.Body>
-                        <Card.Text>
-                            <p> Adı: {props.name} </p>
-                        </Card.Text>
-                    </Card.Body>
                 </Card>
             }            
         </div>
@@ -33,3 +28,10 @@ ImageFrame.propTypes = {
 }
 
 export default ImageFrame;
+
+
+// <Card.Body>
+//                         <Card.Text>
+//                             <p> Adı: {props.name} </p>
+//                         </Card.Text>
+//                     </Card.Body>

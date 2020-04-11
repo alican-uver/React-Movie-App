@@ -52,7 +52,7 @@ class Movie extends Component {
         fetch(endPoint)
             .then(response => response.json())
             .then((credits) => {
-                console.log(credits)
+                // console.log(credits)
                 const filterDirector = credits.crew.filter(person => person.job === "Director"); // filter directors from all employees
                 // console.log(filterDirector)
                 this.setState({
@@ -64,7 +64,7 @@ class Movie extends Component {
     }
 
     render() {
-        console.log(this.state.movie)
+        // console.log(this.state.movie)
         return (
             <>
                 {

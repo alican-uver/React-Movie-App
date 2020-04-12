@@ -1,5 +1,14 @@
+
 .movieInfo {
     background-color: rgba(0, 0, 0, 0.644);
+}
+
+
+
+.movie-title {
+    font-size: 40px;
+    font-weight: 700 !important;
+    color: #0275d8;
 }
 .breadcrumb {
     margin-bottom: 0 !important;

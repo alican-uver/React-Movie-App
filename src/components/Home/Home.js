@@ -29,7 +29,6 @@ class Home extends Component {
     };
 
     searchMovies = searchWord => { // This function trigger the Get Request Function
-        // console.log(searchWord);
 
         let endPoint = "";
         this.setState({
@@ -80,33 +79,35 @@ class Home extends Component {
     };
 
     render() {
+        const { searchWord, movies, loading, currentPage, totalPage } = this.state
+
         return (
             <>
                 <SearchBar callback={this.searchMovies} />
                 <Container className = "animated zoomIn" >
                     <Row>
                         <Col sm = {6} className = "offset-sm-3 text-center">
-                            {this.state.searchWord ? <h2 className = "text-capitalize">{this.state.searchWord} için bulunan sonuçlar </h2> : <h2>Popüler Filmler</h2>}
+                            {searchWord ? <h2 className = "text-capitalize">{searchWord} için bulunan sonuçlar </h2> : <h2>Popüler Filmler</h2>}
                         </Col>
                     </Row>
                     <Row>
                         {
-                            this.state.movies.map((movie, i) => {
+                            movies.map((movie, i) => {
                                 return <ImageFrame
                                     key={i}
                                     image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
                                     clickable={true}
                                     movieId={movie.id}
                                     movieName={movie.original_title}
-                                    searchWord = {this.state.searchWord}
+                                    searchWord = {searchWord}
                                 />
                             })
                         }
                     </Row>
                 </Container>
-                {this.state.loading ? <Spinner /> : null}
-                {(this.state.currentPage <= this.state.totalPage && !this.state.loading) ?
-                    <LoadMoreBtn loadMoreMovies={this.loadMoreMovies} text="Sayfa" currentPage={this.state.currentPage} /> : null
+                {loading ? <Spinner /> : null}
+                {(currentPage <= totalPage && !loading) ?
+                    <LoadMoreBtn loadMoreMovies={this.loadMoreMovies} text="Sayfa" currentPage={currentPage} /> : null
                 }
             </>
         )

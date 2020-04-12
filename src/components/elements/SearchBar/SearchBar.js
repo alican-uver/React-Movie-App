@@ -8,7 +8,7 @@ class SearchBar extends Component {
         value: ""
     }
 
-    timeout = null;
+    timeout = null; 
 
     getValue = event => {
         let value = event.target.value;
@@ -24,7 +24,7 @@ class SearchBar extends Component {
     }
 
     render() {
-        // console.log(this.state.value)
+
         return (
             <div className="mt-4">
                 <Container>

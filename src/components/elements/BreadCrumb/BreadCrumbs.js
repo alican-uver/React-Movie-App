@@ -1,34 +1,38 @@
 import React from 'react';
 import { Breadcrumb } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import propTypes from 'prop-types';
+import Proptypes from 'prop-types';
 
-const BreadCrumbs = (props) => {
+
+const BreadCrumbs = ({ searchWord, clickable, title }) => {
 
     return (
         <Breadcrumb>
-            <Link to ="/">
-                Anasayfa / 
+            <Link to="/">
+                Anasayfa /
             </Link>
             {
-                props.searchWord ? 
-                <Breadcrumb.Item active = {props.clickable ? true : false}>
-                {props.searchWord} 
-                {/* This props comes = Home ----> ImageFrame ----> Movie (with Link url way) ----> MovieInfo ----> Here  */}
-                </Breadcrumb.Item> : null
+                searchWord ?
+                    <Breadcrumb.Item active={clickable ? true : false}>
+                        {searchWord}
+                        {/* This props comes = Home ----> ImageFrame ----> Movie (with Link url way) ----> MovieInfo ----> Here  */}
+                    </Breadcrumb.Item> : null
             }
-            
             <Breadcrumb.Item active>
-                {props.title}
+                {title}
             </Breadcrumb.Item>
         </Breadcrumb>
     )
 }
 
+BreadCrumbs.propTypes = {
+    title : Proptypes.string,
+    searchWord : Proptypes.string,
+    clickable : Proptypes.bool
+}
+
 BreadCrumbs.defaultProps = {
     title: 'Oyuncu Adı Gönderilemedi'
-  };
-
-
+};
 
 export default BreadCrumbs;

@@ -26,10 +26,6 @@ class PopularPeoples extends Component {
         })
     }
 
-
-    
-
-
     render() {        
         return (
             <div>

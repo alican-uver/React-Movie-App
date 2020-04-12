@@ -1,24 +1,23 @@
 import React from 'react';
-import { Col, Card, Container } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
  
-const ImageFrame = (props) => {
 
-    // console.log(props.id)
+const ImageFrame = ({ movieId, movieName, searchWord, image, id, clickable }) => {
 
     return (
         <div className = "col-sm-3 mt-5 fadeEffect">
-            {props.clickable ?
-                <Link to={{ pathname: `${props.movieId}`, movieName: `${props.movieName}`, searchWord: `${props.searchWord}` }}>
+            { clickable ?
+                <Link to={{ pathname: `${movieId}`, movieName: `${movieName}`, searchWord: `${searchWord}` }}>
                     <Card  >
-                        <Card.Img variant="top" src={props.image} alt="movieImg" />
+                        <Card.Img variant="top" src={image} alt="movieImg" />
                     </Card>
                 </Link>
                 : 
-                <Link to = {{pathname : `/${props.id}`}}>
+                <Link to = {{pathname : `/${id}`}}>
                 <Card className = "bg-dark text-light" style = {{maxHeight: "500px"}}>
-                    <Card.Img variant="top" src={props.image} alt="movieImg" />
+                    <Card.Img variant="top" src={image} alt="movieImg" />
                 </Card>
                 </Link>
             }            
@@ -29,14 +28,10 @@ const ImageFrame = (props) => {
 ImageFrame.propTypes = {
     image : PropTypes.string,
     movieId : PropTypes.number, 
-    movieName : PropTypes.string 
+    movieName : PropTypes.string,
+    searchWord : PropTypes.string,
+    id : PropTypes.number,
+    clickable: PropTypes.bool
 }
 
 export default ImageFrame;
-
-
-// <Card.Body>
-//                         <Card.Text>
-//                             <p> Adı: {props.name} </p>
-//                         </Card.Text>
-//                     </Card.Body>

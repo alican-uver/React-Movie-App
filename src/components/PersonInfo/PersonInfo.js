@@ -3,7 +3,7 @@ import { BASE_URL, API_KEY, BASE_IMG } from '../../config';
 import Spinner from '../elements/Spinner/Spinner';
 import ImageFrame from '../elements/ImageFrame/ImageFrame';
 import no_img from '../elements/img/no_image.jpg';
-import { Row, Container, Breadcrumb, Col } from 'react-bootstrap';
+import { Row, Container,Col } from 'react-bootstrap';
 import BreadCrumb from '../elements/BreadCrumb/BreadCrumbs';
 import PersonInfoBar from '../elements/PersonInfoBar/PersonInfoBar';
 import './PersonInfo.css';
@@ -91,5 +91,6 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
         )
     }
 }
+
 
 export default PersonInfo;

@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
-import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
+import React from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import logo from '../elements/img/icon.png';
 
+const Navi = () => {
 
-class Navi extends Component {
-
-    render() {
         return (
             <Navbar bg="dark" variant="dark" expand="lg">
                 <Navbar.Brand> <Link to="/"> <img src={`${logo}`} alt="logo" /> </Link> </Navbar.Brand>
@@ -19,20 +17,6 @@ class Navi extends Component {
                 </Navbar.Collapse>
             </Navbar>
         )
-    }
 }
 
 export default Navi;
-
-
-// Maybe I can make under Navi component SearchBar!
-// <Form
-// inline >
-// <FormControl
-    // type="text"
-    // placeholder="Film Adını Giriniz..."
-    // className="mr-sm-2"
-    // onChange={this.doSearch}
-    // value={this.state.value}
-// />
-// </Form>

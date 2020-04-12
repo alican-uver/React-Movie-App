@@ -2,7 +2,8 @@ import React from "react";
 import "./PersonInfoBar.css";
 import { BASE_IMG } from "../../../config";
 import { Image, Row, Col } from "react-bootstrap";
-import no_img from '../img/no_image.jpg'
+import no_img from '../img/no_image.jpg';
+import Proptypes from 'prop-types';
 
 
 const PersonInfoBar = ({ info }) => {
@@ -40,5 +41,9 @@ const PersonInfoBar = ({ info }) => {
     </div>
   );
 };
+
+PersonInfoBar.propTypes = {
+  info : Proptypes.object
+}
 
 export default PersonInfoBar;

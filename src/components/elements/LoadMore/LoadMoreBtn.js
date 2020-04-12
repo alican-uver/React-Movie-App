@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button, Row, Col, Badge, Container } from 'react-bootstrap';
+import Proptypes from 'prop-types';
 
-const LoadMoreBtn = (props) => {
+const LoadMoreBtn = ({ loadMoreMovies, currentPage, text }) => {
     return (
         <div>
             <Container className = "mb-5">
@@ -10,15 +11,21 @@ const LoadMoreBtn = (props) => {
                         <Button variant="dark" block
                             size="lg"
                             className="px-3"
-                            onClick={props.loadMoreMovies}
+                            onClick={loadMoreMovies} // Function from Home Component
                             >
-                            {props.text} <Badge variant="light">{props.currentPage}</Badge>
+                            {text} <Badge variant="light">{currentPage}</Badge>
                         </Button>
                     </Col>
                 </Row>
             </Container>
         </div>
     )
+}
+
+LoadMoreBtn.propTypes = {
+    loadMoreMovies : Proptypes.func,
+    text : Proptypes.string,
+    currentPage : Proptypes.number
 }
 
 export default LoadMoreBtn;

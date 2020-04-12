@@ -13,7 +13,8 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
     state = {
         personMovies: [],
         loading: false,
-        personDetails: {}
+        personDetails: {},
+        filteredMovie : {}
     }
 
     componentDidMount() {
@@ -23,7 +24,6 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
 
         let endPoint = `${BASE_URL}/person/${this.props.match.params.personId}/movie_credits?api_key=${API_KEY}`
         this.getMovieAndPersonDetails(endPoint)
-
     }
 
     getMovieAndPersonDetails = endPoint => {
@@ -48,7 +48,7 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
     }
 
     render() {
-        console.log(this.state.personDetails)
+        console.log(this.state.filteredMovie)
         const { personMovies, personDetails, loading } = this.state;
 
         return (
@@ -80,6 +80,7 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
                                 return <ImageFrame
                                     key={i}
                                     image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
+                                    id = {movie.id}
                                 />
                             })
                         }

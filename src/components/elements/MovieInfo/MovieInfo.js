@@ -17,14 +17,15 @@ const MovieInfo = (props) => {
         return date;
     }
    
-    console.log(props.movieInfo)
+    // console.log(props.movieInfo)
     return (
         <Container fluid="xs">
             <Row>
                 <Col sm={12} >
                     <BreadCrumbs 
                     title={props.movieInfo.title} 
-                    searchWord = {props.searchWord}                
+                    searchWord = {props.searchWord}  
+                    movieId = {props.movieInfo.id}              
                     />
                 </Col>
             </Row>
@@ -32,9 +33,9 @@ const MovieInfo = (props) => {
             <Row
                 className="p-5 justify-content-md-center text-light movieInfoContainer "
                 style={{
-                    backgroundImage: props.movieInfo.backdrop_path
+                    background: props.movieInfo.backdrop_path
                         ? `url("${IMAGE_BASE_URL}${BACKDROP_SIZE}${props.movieInfo.backdrop_path}")`
-                        : `url(${no_img_bg})`
+                        : '#000'
                 }}
             >
                 <Col sm={4} className="pr-0 animated fadeInLeftBig">
@@ -44,12 +45,12 @@ const MovieInfo = (props) => {
                         src={`${BASE_IMG}${props.movieInfo.poster_path}`}
                         alt="movieImg"
                         className="img-fluid"
-                        /> : 
+                        /> :
                         <img 
                         src={`${no_img_bg}`}
                         alt="movieImg"
                         className="img-fluid"
-                        />
+                        /> 
                     }
                 </Col>
                 <Col sm={5} className="movieInfo p-4 animated fadeInRightBig">

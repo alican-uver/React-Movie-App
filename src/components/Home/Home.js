@@ -16,7 +16,7 @@ class Home extends Component {
         currentPage: 0,
         totalPage: 0,
         loading: false, // Loading Effect
-        searchWord: ""
+        searchWord: "",
     }
 
     componentDidMount() {

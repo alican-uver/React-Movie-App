@@ -11,7 +11,7 @@
 }
 
 .movieInfoContainer {
-    background-size: cover;
+    background-size: cover !important;
     background-repeat: no-repeat !important;
     min-height: 100vh;
 }

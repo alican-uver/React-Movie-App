@@ -17,6 +17,7 @@ const BreadCrumbs = (props) => {
                 {/* This props comes = Home ----> ImageFrame ----> Movie (with Link url way) ----> MovieInfo ----> Here  */}
                 </Breadcrumb.Item> : null
             }
+            
             <Breadcrumb.Item active>
                 {props.title}
             </Breadcrumb.Item>
@@ -25,7 +26,7 @@ const BreadCrumbs = (props) => {
 }
 
 BreadCrumbs.defaultProps = {
-    title: 'Film Adı Gönderilmedi'
+    title: 'Oyuncu Adı Gönderilemedi'
   };
 
 

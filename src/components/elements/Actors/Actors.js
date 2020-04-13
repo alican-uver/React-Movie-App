@@ -10,7 +10,7 @@ const Actors = ({ movieId, personId, name, image, character }) => {
                     <Link to = {{pathname :`${movieId}/${personId}`, actorName : `${name}`}}>
                     <Card className = "actors-card">
                         <Card.Img variant="top" src={image}/>
-                        <Card.Body className = "p-0 pt-4">
+                        <Card.Body className = "p-0 pt-4 actors-card-body">
                             <p className = "actor-name">{name}</p>
                             <p className = "actor-character">{character}</p>
                         </Card.Body>

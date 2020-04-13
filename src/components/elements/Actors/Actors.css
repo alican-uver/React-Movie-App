@@ -4,6 +4,21 @@
     border-radius: 5px !important;
     text-align: center;
     border: 5px solid black !important;
+    border-radius: 10px;
+    transition: .5s ease !important;
+}
+
+.actors-card:hover {
+    border: 5px solid #0275d8 !important
+}
+
+.actors-card .actors-card-body p{
+    transition: .5s ease ;
+
+}
+
+.actors-card:hover .actors-card-body p{
+    color: #f0ad4e;
 }
 
 .actor-name {

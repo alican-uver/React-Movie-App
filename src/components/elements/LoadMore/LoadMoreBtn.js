@@ -10,7 +10,7 @@ const LoadMoreBtn = ({ loadMoreMovies, currentPage, text }) => {
                     <Col className="text-center">
                         <Button variant="dark" block
                             size="lg"
-                            className="px-3"
+                            className="p-3"
                             onClick={loadMoreMovies} // Function from Home Component
                             >
                             {text} <Badge variant="light">{currentPage}</Badge>

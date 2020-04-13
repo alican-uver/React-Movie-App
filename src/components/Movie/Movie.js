@@ -3,14 +3,18 @@ import { BASE_URL, API_KEY } from '../../config';
 import Spinner from '../elements/Spinner/Spinner';
 import MovieInfo from '../elements/MovieInfo/MovieInfo';
 
+
 class Movie extends Component {
 
     state = {
         movie: [],
         loading: false,
         actors: [],
-        directors: []
+        directors: [],
+        visible : 6 // This state is for how many actors rendered. 
     }
+
+
 
     componentDidMount() {
         this.setState({
@@ -63,8 +67,22 @@ class Movie extends Component {
             })
     }
 
+    loadMore = () => {  // Don't hit me because of this code I wrote :)
+        this.setState({
+            loading : true
+        })
+
+        setTimeout(() => {
+            this.setState({
+                visible : this.state.visible + 6,
+                loading: false
+            })
+        }, 500);
+        
+    }
+
     render() {
-            const { movie, loading, actors, directors } = this.state
+            const { movie, loading, actors, directors, visible } = this.state
             const { location } = this.props
         return (
             <>
@@ -77,11 +95,14 @@ class Movie extends Component {
                         actors={actors}
                         directors={directors}
                         searchWord={location.searchWord}
+                        visible = {visible}
+                        loadMore = {this.loadMore}
+                        loading = {loading}
                     /> : null
                 }
 
                 {
-                    !actors && !loading ? <h1>No Movie Found! </h1> : null
+                    !actors && !loading ? <h1>Film Bulunamadı! </h1> : null
                 }
 
             </>

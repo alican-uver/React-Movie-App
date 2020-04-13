@@ -83,7 +83,10 @@ class Home extends Component {
 
         return (
             <>
-                <SearchBar callback={this.searchMovies} />
+                <SearchBar 
+                callback={this.searchMovies} 
+                placeHolder = "Lütfen Aradığınız Filmin Adını Yazınız.."
+                />
                 <Container className = "animated zoomIn" >
                     <Row>
                         <Col sm = {6} className = "offset-sm-3 text-center">

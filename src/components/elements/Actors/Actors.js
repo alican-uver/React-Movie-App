@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 
 const Actors = ({ movieId, personId, name, image, character }) => {
     return (
-              <Col sm = {2} className = "mt-2" >
+              <Col sm = {2} className = "mt-2 animated fadeIn" >
                     <Link to = {{pathname :`${movieId}/${personId}`, actorName : `${name}`}}>
                     <Card className = "actors-card">
                         <Card.Img variant="top" src={image}/>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Container } from 'react-bootstrap';
-import './SearchBar.css'
+import './SearchBar.css';
+import Proptypes from 'prop-types';
 
 class SearchBar extends Component {
 
@@ -25,6 +26,8 @@ class SearchBar extends Component {
 
     render() {
 
+        const { placeHolder } = this.props
+
         return (
             <div className="mt-4">
                 <Container>
@@ -32,7 +35,7 @@ class SearchBar extends Component {
                         <Form.Control
                             size="lg"
                             type="text"
-                            placeholder="Lütfen Aradığınız Filmin Adını Giriniz..."
+                            placeholder={placeHolder}
                             onChange={this.getValue}
                         />
                     </Form.Group>
@@ -40,6 +43,11 @@ class SearchBar extends Component {
             </div>
         )
     }
+}
+
+SearchBar.propTypes = {
+    placeholder : Proptypes.string,
+    callback : Proptypes.func
 }
 
 export default SearchBar;

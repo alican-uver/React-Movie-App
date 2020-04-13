@@ -8,15 +8,20 @@ import no_img from '../img/no_image.jpg';
 import no_img_bg from '../img/bg-not-found.jpg';
 import MovieInfoBar from "../MovieInfoBar/MovieInfoBar";
 import Proptypes from 'prop-types';
+import LoadMoreBtn from "../LoadMore/LoadMoreBtn";
+import Spinner from "../Spinner/Spinner";
 
 
-const MovieInfo = ({ movieInfo, searchWord, directors, actors }) => {
+const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading }) => {
 
     const editReleaseDate = (date) => {  //? Idk why doesn't work !
         // return date.substring(5).split("-").concat(date.substring(0,4)).join("/")
-        console.log(date)
         return date;
+
+        // console.log(date)
     }
+
+    console.log(movieInfo.genres)
    
     return (
         <Container fluid = "xs">
@@ -59,7 +64,7 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors }) => {
                     <h5 className = "text-warning">Açıklama</h5>
                     <p>{movieInfo.overview} </p>
                     <ProgressBar label={`IMDB: ${movieInfo.vote_average}`} animated now = {`${movieInfo.vote_average}`} min={0} max={10} />
-                    <h5 className = "text-warning">Türü: 
+                    <h5 className = "text-warning mt-3">Türü: 
 
                     {  //? Idk why doesn't work !
                         // movieInfo.genres.map((genre, i) => {
@@ -87,9 +92,9 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors }) => {
                             <h1 className = "text-center py-4">Oyuncular</h1>
                         </Col>
                     </Row>
-                <Row>
+                    <Row>
                     {
-                        actors.map((actor, i) => {
+                        actors.slice(0, `${visible}`).map((actor, i) => {
                             return <Actors
                                 key = {i}
                                 name = {actor.name}
@@ -101,6 +106,16 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors }) => {
                         })
                     }
                 </Row>
+                {
+                    loading ? <Spinner/> : null
+                }
+                {
+                    visible < actors.length && loading === false ?  <LoadMoreBtn   
+                    text = {(actors.length - visible) + ' Oyuncu Daha Göster '}
+                    loadMoreMovies = {loadMore}
+                    /> : null
+                }
+
             </Container>
         </Container>
     );
@@ -111,3 +126,5 @@ MovieInfo.propTypes = {
 }
 
 export default MovieInfo;
+
+

@@ -7,6 +7,7 @@ import { Row, Container,Col } from 'react-bootstrap';
 import BreadCrumb from '../elements/BreadCrumb/BreadCrumbs';
 import PersonInfoBar from '../elements/PersonInfoBar/PersonInfoBar';
 import './PersonInfo.css';
+import LoadMoreBtn from '../elements/LoadMore/LoadMoreBtn';
 
 class PersonInfo extends Component { //  depending on the person id, I do request operations in this Class !
 
@@ -14,7 +15,7 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
         personMovies: [],
         loading: false,
         personDetails: {},
-        filteredMovie : {}
+        visible : 8
     }
 
     componentDidMount() {
@@ -47,9 +48,23 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
             })
     }
 
+    loadMoreMovies = () => {
+        this.setState({
+            loading : true
+        })
+
+        setTimeout(() => {
+            this.setState({
+                visible : this.state.visible + 4,
+                loading : false
+            })
+        }, 500);
+        
+    }
+
     render() {
         console.log(this.state.filteredMovie)
-        const { personMovies, personDetails, loading } = this.state;
+        const { personMovies, personDetails, loading, visible } = this.state;
 
         return (
             <div>
@@ -76,17 +91,31 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
                     </Row>
                     <Row>
                         {
-                            personMovies.map((movie, i) => {
+                            personMovies.slice(0, visible).map((movie, i) => {
                                 return <ImageFrame
                                     key={i}
                                     image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
                                     id = {movie.id}
+                                    clickable = {false}
                                 />
                             })
                         }
                     </Row>
-                </Container>
 
+                    {
+                        loading ? <Spinner /> : null
+                    }
+
+                    {
+                        visible < personMovies.length && loading === false ? 
+                        <LoadMoreBtn
+                        loadMoreMovies = {this.loadMoreMovies}
+                        text = {personMovies.length - visible + " Film Daha Göster"}
+                        /> : null
+                    }
+                    
+                    
+                </Container>
             </div>
         )
     }

@@ -6,46 +6,53 @@ import MovieInfo from '../elements/MovieInfo/MovieInfo';
 
 class Movie extends Component {
 
+
     state = {
         movie: [],
-        loading: false,
+        loadingMovies: false,
+        loadingActors: false,
         actors: [],
         directors: [],
-        visible : 6 // This state is for how many actors rendered. 
+        visible: 6 // This state is for how many actors rendered.
     }
 
-
-
     componentDidMount() {
+        const { match } = this.props;
+
         this.setState({
-            loading: true
+            ...this.state,
+            loadingMovies: true,
+            loadingActors: true
         })
-        
-        let moviesEndPoint = `${BASE_URL}/movie/${this.props.match.params.movieId}?api_key=${API_KEY}&language=tr`
-        let creditsEndPoint = `${BASE_URL}/movie/${this.props.match.params.movieId}/credits?api_key=${API_KEY}`;
+
+        let moviesEndPoint = `${BASE_URL}/movie/${match.params.movieId}?api_key=${API_KEY}&language=tr`
+        let creditsEndPoint = `${BASE_URL}/movie/${match.params.movieId}/credits?api_key=${API_KEY}`;
         this.getMovieWithId(moviesEndPoint);
         this.getDirectorsAndActors(creditsEndPoint);
     }
 
     getMovieWithId = moviesEndPoint => {
+        const { match } = this.props;
+
         fetch(moviesEndPoint)
             .then(response => response.json())
             .then((movie) => {
                 // console.log(movie);
 
-                if (movie.overview !== "" && !movie.status_code) {
+                if (movie.overview !== "") {
                     this.setState({
                         movie,
-                        loading: false
+                        loadingMovies: false
                     })
                 }
                 else { // if have not turkish overview fetch this 
-                    let engEndPoint = `${BASE_URL}/movie/${this.props.match.params.movieId}?api_key=${API_KEY}`
+                    let engEndPoint = `${BASE_URL}/movie/${match.params.movieId}?api_key=${API_KEY}`
                     fetch(engEndPoint)
                         .then(response => response.json())
                         .then((movie) => {
                             this.setState({
-                                movie
+                                movie,
+                                loadingMovies: false
                             })
                         })
                 }
@@ -56,58 +63,58 @@ class Movie extends Component {
         fetch(creditsEndPoint)
             .then(response => response.json())
             .then((credits) => {
-                // console.log(credits)
-                const filterDirector = credits.crew.filter(person => person.job === "Director"); // filter directors from all employees
-                // console.log(filterDirector)
-                this.setState({
-                    actors: credits.cast,
-                    directors: filterDirector[0].name,
-                    loading: false
-                })
+                console.log(credits)
+                    const filterDirector = credits.crew.filter(person => person.job === "Director"); // filter directors from all employees
+                    console.log(credits.crew)
+                    if (filterDirector.length) {
+                        this.setState({
+                            actors: credits.cast,
+                            directors: filterDirector[0].name,
+                            loadingActors: false
+                        })
+                    }
+                    else {
+                        this.setState({
+                            actors: credits.cast,
+                            directors: "Bilgi Yok",
+                            loadingActors: false
+                        })
+                    }             
             })
     }
 
-    loadMore = () => {  // Don't hit me because of this code I wrote :)
-        this.setState({
-            loading : true
-        })
 
-        setTimeout(() => {
-            this.setState({
-                visible : this.state.visible + 6,
-                loading: false
-            })
-        }, 500);
-        
+    loadMore = () => { 
+        this.setState({
+            visible: this.state.visible + 6,
+        })
     }
 
     render() {
-            const { movie, loading, actors, directors, visible } = this.state
-            const { location } = this.props
+        const { movie, loadingActors, loadingMovies, actors, directors, visible } = this.state
+        const { location } = this.props
         return (
             <>
-                {
-                    loading ? <Spinner /> : null
-                }
-                {this.state.movie ?
-                    <MovieInfo
-                        movieInfo={movie}
-                        actors={actors}
-                        directors={directors}
-                        searchWord={location.searchWord}
-                        visible = {visible}
-                        loadMore = {this.loadMore}
-                        loading = {loading}
-                    /> : null
+                {loadingActors || loadingMovies ? <Spinner /> :
+                    (movie && actors.length) ?
+                        <MovieInfo
+                            movieInfo={movie}
+                            actors={actors}
+                            directors={directors}
+                            searchWord={location.searchWord}
+                            visible = {visible}
+                            loadMore = {this.loadMore}
+                            loading = {(loadingActors || loadingMovies)}
+                        /> : null
                 }
 
                 {
-                    !actors && !loading ? <h1>Film Bulunamadı! </h1> : null
+                    !actors.length && !loadingActors ? <h1>Film Bulunamadı! </h1> : null
                 }
-
             </>
         )
     }
 }
 
 export default Movie;
+

@@ -87,7 +87,7 @@ class Home extends Component {
                 callback={this.searchMovies} 
                 placeHolder = "Lütfen Aradığınız Filmin Adını Yazınız.."
                 />
-                <Container className = "animated zoomIn" >
+                <Container>
                     <Row>
                         <Col sm = {6} className = "offset-sm-3 text-center">
                             {searchWord ? <h2 className = "text-capitalize">{searchWord} için bulunan sonuçlar </h2> : <h2>Popüler Filmler</h2>}

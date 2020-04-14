@@ -16,8 +16,18 @@ const PersonInfoBar = ({ info }) => {
             return value;
         }
     }
-    // `${BASE_IMG}${info.profile_path}`
 
+    const editReleaseDate = date => { 
+    
+        if (date !== null && date !== "") {
+            return date.split("-").reverse().join("/")
+        }
+        else {
+            return "Bilgi Yok"
+        }
+
+    }
+    
   return (
     <div className="p-4 person-info-bar-container">
       <Row className = "d-flex justify-content-center align-items-center">
@@ -30,7 +40,7 @@ const PersonInfoBar = ({ info }) => {
         </Col>
         <Col sm={8} className = "person-info animated fadeInRightBig">
             <h5>Oyuncu Adı : <small> {isPropsNull(info.name)} </small></h5>
-            <h5>Doğum Tarihi : <small> {isPropsNull(info.birthday)} </small></h5>
+            <h5>Doğum Tarihi : <small> {editReleaseDate(info.birthday)} </small></h5>
              {
                  info.deathday ? <h5>Ölüm Tarihi : <small> {info.deathday} </small> </h5> : null
              }

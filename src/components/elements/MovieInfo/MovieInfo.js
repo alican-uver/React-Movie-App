@@ -1,6 +1,6 @@
 import React from "react";
 import Actors from '../Actors/Actors';
-import { Row, Col, Container, ProgressBar } from "react-bootstrap";
+import { Row, Col, Container, ProgressBar, Badge } from "react-bootstrap";
 import BreadCrumbs from "../BreadCrumb/BreadCrumbs";
 import { BASE_IMG, IMAGE_BASE_URL, BACKDROP_SIZE } from "../../../config";
 import './MovieInfo.css';
@@ -11,17 +11,21 @@ import Proptypes from 'prop-types';
 import LoadMoreBtn from "../LoadMore/LoadMoreBtn";
 import Spinner from "../Spinner/Spinner";
 
-
 const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading }) => {
 
-    const editReleaseDate = (date) => {  //? Idk why doesn't work !
-        // return date.substring(5).split("-").concat(date.substring(0,4)).join("/")
-        return date;
+    const editReleaseDate = date => { 
+    
+        if (date !== null && date !== "") {
+            return date.split("-").reverse().join("/")
+        }
+        else {
+            return "Bilgi Yok"
+        }
 
-        // console.log(date)
     }
 
-    console.log(movieInfo.genres)
+    console.log(movieInfo.release_date)
+
    
     return (
         <Container fluid = "xs">
@@ -64,17 +68,25 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                     <h5 className = "text-warning">Açıklama</h5>
                     <p>{movieInfo.overview} </p>
                     <ProgressBar label={`IMDB: ${movieInfo.vote_average}`} animated now = {`${movieInfo.vote_average}`} min={0} max={10} />
-                    <h5 className = "text-warning mt-3">Türü: 
-
-                    {  //? Idk why doesn't work !
-                        // movieInfo.genres.map((genre, i) => {
-                        //     return <span key = {i} >{genre.name}</span>
-                        // })
+                    <div className = "text-warning mt-3 h5">Türü:
+                
+                     <span> 
+                    {  
+                        movieInfo.genres.map((genre, i) => {
+                            return <Badge
+                            className = "ml-2 mb-2"
+                            variant = "primary" 
+                            key = {i}  
+                            >
+                            {genre.name}
+                            </Badge>
+                        })
                     }
+                    </span>
 
-                    </h5>
-                    <h5 className ="mt-2 text-warning">Yönetmen:  <span className = "text-light">{directors} </span> </h5>
-                    <div> <i className="fas fa-film fa-5x"></i> </div>
+                    </div>
+
+                    <h5 className ="mt-3 text-warning">Yönetmen:  <span className = "text-light">{directors} </span> </h5>
                 </Col>
             </Row>
             <Row>
@@ -107,15 +119,14 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                     }
                 </Row>
                 {
-                    loading ? <Spinner/> : null
+                    loading ? <Spinner/> :         
+                    (
+                        visible < actors.length ? <LoadMoreBtn   
+                        text = {(actors.length - visible) + ' Oyuncu Daha Göster '}
+                        loadMoreMovies = {loadMore}
+                        /> : null
+                    )
                 }
-                {
-                    visible < actors.length && loading === false ?  <LoadMoreBtn   
-                    text = {(actors.length - visible) + ' Oyuncu Daha Göster '}
-                    loadMoreMovies = {loadMore}
-                    /> : null
-                }
-
             </Container>
         </Container>
     );

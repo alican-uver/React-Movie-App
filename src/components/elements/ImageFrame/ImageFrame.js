@@ -8,16 +8,16 @@ import './ImageFrame.css';
 const ImageFrame = ({ movieId, movieName, searchWord, image, id, clickable }) => {
 
     return (
-        <div className = "col-sm-3 mt-5 fadeEffect image-frame ">
+        <div className = "col-sm-3 mt-5 animated fadeInLeftBig ">
             { clickable ?
                 <Link to={{ pathname: `${movieId}`, movieName: `${movieName}`, searchWord: `${searchWord}` }}>
-                    <Card className = "card-box ">
+                    <Card className = "card-box image-frame  ">
                         <Card.Img variant="top" src={image} alt="movieImg" />
                     </Card>
                 </Link>
                 : 
                 <Link to = {{pathname : `/${id}`}}>
-                <Card className = "bg-dark text-light card-box " style = {{maxHeight: "500px"}}>
+                <Card className = "bg-dark text-light card-box  image-frame " style = {{maxHeight: "500px"}}>
                     <Card.Img variant="top" src={image} alt="movieImg" />
                 </Card>
                 </Link>

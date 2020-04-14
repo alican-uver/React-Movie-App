@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { BASE_URL, API_KEY, BASE_IMG } from '../config';
-import ImageFrame from './elements/ImageFrame/ImageFrame';
+// import ImageFrame from './elements/ImageFrame/ImageFrame';
 import no_img from './elements/img/no_image.jpg';
 import { Row, Col, Container } from 'react-bootstrap';
 import SearchBar from './elements/SearchBar/SearchBar';
+import Actors from './elements/Actors/Actors';
 
 class PopularPeoples extends Component {
 
@@ -12,10 +13,15 @@ class PopularPeoples extends Component {
         currentPage : 0,
         totalPage : 0,
         searchWord : "",
-        loading : false 
+        loadingPersons : false 
     }
 
     componentDidMount() {
+        this.setState({
+            ...this.state,
+            loadingPersons : true
+        })
+
         let endPoint = `${BASE_URL}/person/popular?api_key=${API_KEY}&page=1`;
         this.getPeople(endPoint)
     }
@@ -25,16 +31,17 @@ class PopularPeoples extends Component {
             .then(response => response.json())
             .then((peoples) => {
                 console.log(peoples.results);
+
                 this.setState({
                     persons: [...peoples.results],
-                    loading: true,
+                    loadingPersons: true,
                 })
             })
     }
 
-
-
-
+    // loadMorePeoples = () => {
+        
+    // }
 
     render() {
         return (
@@ -56,11 +63,13 @@ class PopularPeoples extends Component {
                         {
                             this.state.persons.map((person, i) => {
                                 return (
-                                    <ImageFrame
+                                    <Actors
                                         key={i}
                                         image={person.profile_path ? `${BASE_IMG}${person.profile_path}` : `${no_img}`}
                                         clickable={false}
                                         name={person.name}
+                                        forActors = {false}
+                                        popularPeopleId = {person.id}
                                     />
                                 )
                             })

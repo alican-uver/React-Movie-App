@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import './ImageFrame.css';
  
 
-const ImageFrame = ({ movieId, movieName, searchWord, image, id, clickable }) => {
+const ImageFrame = ({ movieId, movieName, searchWord, image, personMovieId, clickable }) => {
 
     return (
         <div className = "col-sm-3 mt-5 animated fadeInLeftBig ">
@@ -16,7 +16,7 @@ const ImageFrame = ({ movieId, movieName, searchWord, image, id, clickable }) =>
                     </Card>
                 </Link>
                 : 
-                <Link to = {{pathname : `/${id}`}}>
+                <Link to = {{pathname: `/${personMovieId}`}}>
                 <Card className = "bg-dark text-light card-box  image-frame " style = {{maxHeight: "500px"}}>
                     <Card.Img variant="top" src={image} alt="movieImg" />
                 </Card>

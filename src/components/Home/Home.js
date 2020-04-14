@@ -109,7 +109,7 @@ class Home extends Component {
                     </Row>
                 </Container>
                 {loading ? <Spinner /> : null}
-                {(currentPage <= totalPage && !loading) ?
+                {(currentPage <= totalPage && !loading ) ?
                     <LoadMoreBtn loadMoreMovies={this.loadMoreMovies} text="Sayfa" currentPage={currentPage} /> : null
                 }
             </>

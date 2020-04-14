@@ -99,7 +99,7 @@ render() {
                         return <ImageFrame
                           key={i}
                           image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
-                          id={movie.id}
+                          personMovieId={movie.id}
                           clickable={false}
                         />
                       })
@@ -126,18 +126,3 @@ render() {
 
 
 export default PersonInfo;
-
-
-// {
-//     loading ? <Spinner /> : null
-//   }
-
-
-
-// {
-//     visible < personMovies.length && loading === false ?
-//       <LoadMoreBtn
-//         loadMoreMovies={this.loadMoreMovies}
-//         text={personMovies.length - visible + " Film Daha Göster"}
-//       /> : null
-// }

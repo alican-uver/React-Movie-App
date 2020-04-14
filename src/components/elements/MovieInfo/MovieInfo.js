@@ -114,6 +114,7 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                                 character = {actor.character}
                                 personId = {actor.id}
                                 movieId = {movieInfo.id}
+                                forActors = {true}
                             />
                         })
                     }

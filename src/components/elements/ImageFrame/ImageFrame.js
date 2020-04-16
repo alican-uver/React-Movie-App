@@ -9,14 +9,14 @@ const ImageFrame = ({ movieId, movieName, searchWord, image, personMovieId, clic
 
     return (
         <div className = "col-sm-3 mt-5 animated fadeInLeftBig ">
-            { clickable ?
-                <Link to={{ pathname: `${movieId}`, movieName: `${movieName}`, searchWord: `${searchWord}` }}>
+            { clickable ? /* if clickable props is true --> go movie, else go movie again but with personal movie id ! */
+                <Link to={{ pathname:`/movie/${movieId}`, movieName: `${movieName}`, searchWord: `${searchWord}` }}>
                     <Card className = "card-box image-frame  ">
                         <Card.Img variant="top" src={image} alt="movieImg" />
                     </Card>
                 </Link>
                 : 
-                <Link to = {{pathname: `/${personMovieId}`}}>
+                <Link to = {{pathname: `/movie/${personMovieId}`}}>  {/* Person Known For Movies*/}
                 <Card className = "bg-dark text-light card-box  image-frame " style = {{maxHeight: "500px"}}>
                     <Card.Img variant="top" src={image} alt="movieImg" />
                 </Card>

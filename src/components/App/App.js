@@ -20,8 +20,8 @@ const App = () => {
                     <Route exact path="/" component = {Home} />
                     <Route exact path="/favourites" component={FavouriteMovies} />
                     <Route exact path="/popPeoples" component={PopularPeoples} />
-                    <Route exact path = "/:movieId" component = {Movie} />
-                    <Route exact path = "/:movieId/:personId" component = {PersonInfo} />
+                    <Route exact path = "/movie/:movieId" component = {Movie} />
+                    <Route exact path = "/person/:personId" component = {PersonInfo} />
                     <Route component = {NotFound} />
                 </Switch>
             </React.Fragment>

@@ -59,7 +59,6 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
   }
 
     loadMoreMovies = () => {
-
         this.setState({
             visible : this.state.visible + 4,
         })

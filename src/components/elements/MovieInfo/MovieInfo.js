@@ -113,7 +113,7 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                                 image = {actor.profile_path ? `${BASE_IMG}${actor.profile_path}` : `${no_img}`}
                                 character = {actor.character}
                                 personId = {actor.id}
-                                movieId = {movieInfo.id}
+                                // movieId = {movieInfo.id}
                                 forActors = {true}
                             />
                         })

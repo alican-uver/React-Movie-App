@@ -10,23 +10,10 @@ import MovieInfoBar from "../MovieInfoBar/MovieInfoBar";
 import Proptypes from 'prop-types';
 import LoadMoreBtn from "../LoadMore/LoadMoreBtn";
 import Spinner from "../Spinner/Spinner";
+import {editReleaseDate} from '../../../commonFunctions';
 
 const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading }) => {
 
-    const editReleaseDate = date => { 
-    
-        if (date !== null && date !== "") {
-            return date.split("-").reverse().join("/")
-        }
-        else {
-            return "Bilgi Yok"
-        }
-
-    }
-
-    console.log(movieInfo.release_date)
-
-   
     return (
         <Container fluid = "xs">
             <Row>
@@ -63,13 +50,16 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                     }
                 </Col>
                 <Col sm={5} className="movieInfo p-4 animated fadeInRightBig">
+                    <span className = "add-to-favourites">
+                        <i class="fas fa-heart fa-2x"></i>
+                    </span>
                     <p className = "movie-title" > {movieInfo.title} </p>
                     <h5 className = "mb-4 text-warning">Yayınlanma Tarihi: <span className = "text-light">{editReleaseDate(movieInfo.release_date)}</span></h5>
                     <h5 className = "text-warning">Açıklama</h5>
                     <p>{movieInfo.overview} </p>
                     <ProgressBar label={`IMDB: ${movieInfo.vote_average}`} animated now = {`${movieInfo.vote_average}`} min={0} max={10} />
                     <div className = "text-warning mt-3 h5">Türü:
-                
+                    
                      <span> 
                     {  
                         movieInfo.genres.map((genre, i) => {

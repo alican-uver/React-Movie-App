@@ -1,7 +1,21 @@
 
 .movieInfo {
     background-color: rgba(0, 0, 0, 0.644);
+    position: relative;
 }
+
+.add-to-favourites {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    transition: ease .3s all;
+    cursor: pointer;
+}
+
+.add-to-favourites:hover {
+    color: red;
+}
+
 
 
 

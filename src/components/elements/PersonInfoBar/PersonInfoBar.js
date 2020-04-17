@@ -4,6 +4,7 @@ import { BASE_IMG } from "../../../config";
 import { Image, Row, Col } from "react-bootstrap";
 import no_img from '../img/no_image.jpg';
 import Proptypes from 'prop-types';
+import {editReleaseDate} from '../../../commonFunctions';
 
 
 const PersonInfoBar = ({ info }) => {
@@ -15,17 +16,6 @@ const PersonInfoBar = ({ info }) => {
         else {
             return value;
         }
-    }
-
-    const editReleaseDate = date => { 
-    
-        if (date !== null && date !== "") {
-            return date.split("-").reverse().join("/")
-        }
-        else {
-            return "Bilgi Yok"
-        }
-
     }
     
   return (

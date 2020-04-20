@@ -10,11 +10,12 @@
     right: 20px;
     transition: ease .3s all;
     cursor: pointer;
-}
-
-.add-to-favourites:hover {
     color: red;
 }
+
+/* .add-to-favourites:hover {
+    color: red;
+} */
 
 
 

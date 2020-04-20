@@ -12,7 +12,7 @@ import LoadMoreBtn from "../LoadMore/LoadMoreBtn";
 import Spinner from "../Spinner/Spinner";
 import {editReleaseDate} from '../../../commonFunctions';
 
-const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading }) => {
+const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading, getFavouriteMovies, isSameMovie }) => {
 
     return (
         <Container fluid = "xs">
@@ -50,8 +50,10 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                     }
                 </Col>
                 <Col sm={5} className="movieInfo p-4 animated fadeInRightBig">
-                    <span className = "add-to-favourites">
-                        <i class="fas fa-heart fa-2x"></i>
+                    <span //Add To Favourites Icon
+                    onClick = { () => getFavouriteMovies(movieInfo)}
+                    className = "add-to-favourites"> 
+                        <i className="fas fa-heart fa-2x"></i>
                     </span>
                     <p className = "movie-title" > {movieInfo.title} </p>
                     <h5 className = "mb-4 text-warning">Yayınlanma Tarihi: <span className = "text-light">{editReleaseDate(movieInfo.release_date)}</span></h5>

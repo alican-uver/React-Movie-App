@@ -13,7 +13,7 @@ class Movie extends Component {
         loadingActors: false,
         actors: [],
         directors: [],
-        visible: 6 // This state is for how many actors rendered.
+        visible: 6, // This state is for how many actors rendered.
     }
 
     componentDidMount() {
@@ -83,7 +83,6 @@ class Movie extends Component {
             })
     }
 
-
     loadMore = () => { 
         this.setState({
             visible: this.state.visible + 6,
@@ -92,7 +91,7 @@ class Movie extends Component {
 
     render() {
         const { movie, loadingActors, loadingMovies, actors, directors, visible } = this.state
-        const { location } = this.props
+        const { location,  getFavouriteMovies, isSameMovie  } = this.props
         return (
             <>
                 {loadingActors || loadingMovies ? <Spinner /> :
@@ -105,6 +104,8 @@ class Movie extends Component {
                             visible = {visible}
                             loadMore = {this.loadMore}
                             loading = {(loadingActors || loadingMovies)}
+                            getFavouriteMovies = {getFavouriteMovies}
+                            // isSameMovie = {isSameMovie}
                         /> : null
                 }
 

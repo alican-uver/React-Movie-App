@@ -62,7 +62,6 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
         this.setState({
             visible : this.state.visible + 4,
         })
-        
     }
 
 render() {

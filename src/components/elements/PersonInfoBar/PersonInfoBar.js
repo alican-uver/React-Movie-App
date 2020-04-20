@@ -4,7 +4,7 @@ import { BASE_IMG } from "../../../config";
 import { Image, Row, Col } from "react-bootstrap";
 import no_img from '../img/no_image.jpg';
 import Proptypes from 'prop-types';
-import {editReleaseDate} from '../../../commonFunctions';
+import { editReleaseDate } from '../../../Functions/CommonFunctions/commonFunctions';
 
 
 const PersonInfoBar = ({ info }) => {

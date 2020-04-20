@@ -9,6 +9,7 @@ import NotFound from '../NotFound/NotFound';
 import ScrollTop from '../elements/ScrollTop/ScrollTop';
 import PersonInfo from '../PersonInfo/PersonInfo';
 import alertify from 'alertifyjs';
+import { addLocalStorage, removeMovieFromStorage  } from '../../Functions/StorageFunctions/storageFunctions';
 
 class App extends Component {
 
@@ -18,6 +19,17 @@ class App extends Component {
         loadMovies: false
     }
 
+    componentDidMount() {
+        if (localStorage.getItem("favouriteMovies")) { // First Contact this App 
+          let movies = JSON.parse(localStorage.getItem('favouriteMovies'));
+          this.setState({
+            ...this.state,
+            favouriteMovies : movies,
+            loadMovies : true
+          }, () => console.log(this.state))
+        }
+      }
+
     getFavouriteMovies = favouritesMovie => {
         const stateMovies = this.state.favouriteMovies;
         const addedMovie = stateMovies.find(movie => movie.id === favouritesMovie.id);
@@ -26,6 +38,7 @@ class App extends Component {
                 ...this.state,
                 favouriteMovies: [...stateMovies, favouritesMovie],
             })
+            addLocalStorage(favouritesMovie)
             alertify.success("Film Başarı İle Eklendi", 2)
         }
         else {
@@ -39,8 +52,8 @@ class App extends Component {
         this.setState({
             favouriteMovies: filterMovie
         })
-
         alertify.success(" Bu Film Başarı İle Silindi", 2)
+        removeMovieFromStorage(id)
     }
 
     clearAllFavouriteMovies = () => {
@@ -50,6 +63,8 @@ class App extends Component {
         if (this.state.favouriteMovies.length) {
             alertify.success(" Bütün Filmler Başarı İle Silindi", 2)
         }
+
+        localStorage.removeItem("favouriteMovies");
     }
 
 
@@ -100,3 +115,37 @@ class App extends Component {
 
 }
 export default App;
+
+
+
+ // addLocalStorage = movie => {
+    //     let movies = this.getMovieFromStorage();
+
+    //     movies.push(movie)
+    
+    //     localStorage.setItem('favouriteMovies', JSON.stringify(movies))
+    
+    // }
+
+    // getMovieFromStorage = () => {
+    //     let movies;
+    //     if (localStorage.getItem('favouriteMovies') === null ) {
+    //         movies = []
+    //     }
+    //     else {
+    //         movies = JSON.parse(localStorage.getItem('favouriteMovies'))
+    //     }
+
+    //     return movies;
+    // }
+
+
+        // removeMovieFromStorage = id => {
+    //     let movies = this.getMovieFromStorage();
+    //     movies.forEach(function(movie, index) {
+    //         if (movie.id === id) {
+    //             movies.splice(index, 1)
+    //         }
+    //     })
+    //     localStorage.setItem("favouriteMovies", JSON.stringify(movies))
+    // }

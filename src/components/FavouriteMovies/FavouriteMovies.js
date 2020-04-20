@@ -13,14 +13,13 @@ class FavouriteMovies extends Component {
     return (
       <Container>
         {
-          favouriteMovies.length || loadMovies ?
+          favouriteMovies.length ?
             <React.Fragment>
               <Row className="my-3">
                 <Col sm={12}>
                   <h1 className="text-center">Favori Filmlerim</h1>
                 </Col>
               </Row>
-
               <Row>
                 {
                   favouriteMovies.map((movie, i) => {

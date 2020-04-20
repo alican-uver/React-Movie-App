@@ -10,7 +10,7 @@ import MovieInfoBar from "../MovieInfoBar/MovieInfoBar";
 import Proptypes from 'prop-types';
 import LoadMoreBtn from "../LoadMore/LoadMoreBtn";
 import Spinner from "../Spinner/Spinner";
-import {editReleaseDate} from '../../../commonFunctions';
+import { editReleaseDate } from '../../../Functions/CommonFunctions/commonFunctions';
 
 const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading, getFavouriteMovies, isSameMovie }) => {
 

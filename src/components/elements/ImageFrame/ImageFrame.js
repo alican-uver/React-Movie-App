@@ -5,16 +5,25 @@ import PropTypes from 'prop-types';
 import './ImageFrame.css';
  
 
-const ImageFrame = ({ movieId, movieName, searchWord, image, personMovieId, clickable }) => {
+const ImageFrame = ({ movieId, movieName, searchWord, image, personMovieId, clickable, clearFavouriteMovie }) => {
 
     return (
         <div className = "col-sm-3 mt-5 animated fadeInLeftBig ">
             { clickable ? /* if clickable props is true --> go movie, else go movie again but with personal movie id ! */
-                <Link to={{ pathname:`/movie/${movieId}`, movieName: `${movieName}`, searchWord: `${searchWord}` }}>
-                    <Card className = "card-box image-frame  ">
-                        <Card.Img variant="top" src={image} alt="movieImg" />
-                    </Card>
-                </Link>
+                <React.Fragment>
+                    <Link to={{ pathname: `/movie/${movieId}`, movieName: `${movieName}` }}>
+                        <Card className="card-box image-frame  ">
+                            <Card.Img variant="top" src={image} alt="movieImg" />
+                        </Card>
+                    </Link>
+                    {
+                        clearFavouriteMovie && <button
+                            className="mt-3 btn btn-warning btn-block shadow-lg"
+                            onClick={ () => clearFavouriteMovie(movieId) }
+                        > Bu Filmi Sil </button>
+
+                    }
+                </React.Fragment>
                 : 
                 <Link to = {{pathname: `/movie/${personMovieId}`}}>  {/* Person Known For Movies*/}
                 <Card className = "bg-dark text-light card-box  image-frame " style = {{maxHeight: "500px"}}>

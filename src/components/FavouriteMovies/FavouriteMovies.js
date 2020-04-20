@@ -8,7 +8,7 @@ import HaveNotFavouriteMovies from '../elements/HaveNotFavouriteMovies/HaveNotFa
 class FavouriteMovies extends Component {
 
   render() {
-    const { favouriteMovies, clearAllFavouriteMovies, clearFavouriteMovie, loadMovies } = this.props;
+    const { favouriteMovies, clearAllFavouriteMovies, clearFavouriteMovie  } = this.props;
 
     return (
       <Container>

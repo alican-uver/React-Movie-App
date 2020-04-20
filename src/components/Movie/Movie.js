@@ -91,7 +91,7 @@ class Movie extends Component {
 
     render() {
         const { movie, loadingActors, loadingMovies, actors, directors, visible } = this.state
-        const { location,  getFavouriteMovies, isSameMovie  } = this.props
+        const { location,  getFavouriteMovies } = this.props
         return (
             <>
                 {loadingActors || loadingMovies ? <Spinner /> :

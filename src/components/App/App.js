@@ -16,7 +16,7 @@ class App extends Component {
     state = {
         favouriteMovies: [],
         // isSameMovie: false,
-        loadMovies: false
+        // loadMovies: false
     }
 
     componentDidMount() {
@@ -25,7 +25,7 @@ class App extends Component {
           this.setState({
             ...this.state,
             favouriteMovies : movies,
-            loadMovies : true
+            // loadMovies : true
           }, () => console.log(this.state))
         }
       }
@@ -70,7 +70,7 @@ class App extends Component {
 
     render() {
 
-        const { favouriteMovies, loadMovies } = this.state;
+        const { favouriteMovies } = this.state;
 
         return (
             <Router>
@@ -80,15 +80,15 @@ class App extends Component {
                         <Switch>
                             <Route exact path="/" component={Home} />
                             <Route exact path="/favourites"
-                                render={
+                                render = {
                                     props => (
                                         <FavouriteMovies
                                             {...props}
                                             favouriteMovies={favouriteMovies}
                                             clearAllFavouriteMovies={this.clearAllFavouriteMovies}
                                             clearFavouriteMovie={this.clearFavouriteMovie}
-                                            loadMovies={loadMovies}
-                                        />
+                                            // loadMovies={loadMovies}
+                                        /> 
                                     )
                                 }
                             />

@@ -12,7 +12,7 @@ import LoadMoreBtn from "../LoadMore/LoadMoreBtn";
 import Spinner from "../Spinner/Spinner";
 import { editReleaseDate } from '../../../Functions/CommonFunctions/commonFunctions';
 
-const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading, getFavouriteMovies, isSameMovie }) => {
+const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading, getFavouriteMovies }) => {
 
     return (
         <Container fluid = "xs">

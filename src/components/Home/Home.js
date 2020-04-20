@@ -6,7 +6,6 @@ import LoadMoreBtn from '../elements/LoadMore/LoadMoreBtn'
 import SearchBar from '../elements/SearchBar/SearchBar';
 import { Row, Col, Container } from 'react-bootstrap';
 import no_img from '../elements/img/no_image.jpg';
-import '../../index.css';
 
 
 class Home extends Component {

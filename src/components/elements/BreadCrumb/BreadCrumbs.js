@@ -9,7 +9,7 @@ const BreadCrumbs = ({ searchWord, clickable, title }) => {
     return (
         <Breadcrumb>
             <Link to="/">
-                Anasayfa /
+                Anasayfa / 
             </Link>
             {
                 searchWord ?

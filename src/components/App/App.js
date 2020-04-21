@@ -26,7 +26,7 @@ class App extends Component {
             ...this.state,
             favouriteMovies : movies,
             // loadMovies : true
-          }, () => console.log(this.state))
+          })
         }
       }
 
@@ -115,37 +115,3 @@ class App extends Component {
 
 }
 export default App;
-
-
-
- // addLocalStorage = movie => {
-    //     let movies = this.getMovieFromStorage();
-
-    //     movies.push(movie)
-    
-    //     localStorage.setItem('favouriteMovies', JSON.stringify(movies))
-    
-    // }
-
-    // getMovieFromStorage = () => {
-    //     let movies;
-    //     if (localStorage.getItem('favouriteMovies') === null ) {
-    //         movies = []
-    //     }
-    //     else {
-    //         movies = JSON.parse(localStorage.getItem('favouriteMovies'))
-    //     }
-
-    //     return movies;
-    // }
-
-
-        // removeMovieFromStorage = id => {
-    //     let movies = this.getMovieFromStorage();
-    //     movies.forEach(function(movie, index) {
-    //         if (movie.id === id) {
-    //             movies.splice(index, 1)
-    //         }
-    //     })
-    //     localStorage.setItem("favouriteMovies", JSON.stringify(movies))
-    // }

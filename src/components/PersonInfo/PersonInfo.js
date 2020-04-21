@@ -8,6 +8,7 @@ import BreadCrumb from '../elements/BreadCrumb/BreadCrumbs';
 import PersonInfoBar from '../elements/PersonInfoBar/PersonInfoBar';
 import './PersonInfo.css';
 import LoadMoreBtn from '../elements/LoadMore/LoadMoreBtn';
+import PageTitle from '../elements/PageTitle/PageTitle';
 
 class PersonInfo extends Component { //  depending on the person id, I do request operations in this Class !
 
@@ -86,11 +87,7 @@ render() {
                     </Row>
                   </Container>  
                 <Container className="animated fadeIn">
-                  <Row className="mt-4">
-                    <Col sm={12} className="text-center">
-                      <h1>Rol Aldığı Filmler</h1>
-                    </Col>
-                  </Row>
+                  <PageTitle title = "rol aldığı filmler" />
                   <Row>
                     {
                       personMovies.slice(0, visible).map((movie, i) => {

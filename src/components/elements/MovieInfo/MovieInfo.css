@@ -17,9 +17,6 @@
     color: red;
 } */
 
-
-
-
 .movie-title {
     font-size: 40px;
     font-weight: 700 !important;
@@ -39,6 +36,7 @@
     background-repeat: no-repeat !important;
     min-height: 100vh;
 }
+
 
 
 

@@ -6,6 +6,7 @@ import LoadMoreBtn from '../elements/LoadMore/LoadMoreBtn'
 import SearchBar from '../elements/SearchBar/SearchBar';
 import { Row, Col, Container } from 'react-bootstrap';
 import no_img from '../elements/img/no_image.jpg';
+import PageTitle from '../elements/PageTitle/PageTitle';
 
 
 class Home extends Component {
@@ -89,7 +90,7 @@ class Home extends Component {
                 <Container>
                     <Row>
                         <Col sm = {6} className = "offset-sm-3 text-center">
-                            {searchWord ? <h2 className = "text-capitalize">{searchWord} için bulunan sonuçlar </h2> : <h2>Popüler Filmler</h2>}
+                            {searchWord ? <h2 >{searchWord} için bulunan sonuçlar </h2> : <PageTitle  title = "popüler oyuncular"/> }
                         </Col>
                     </Row>
                     <Row>

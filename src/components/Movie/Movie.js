@@ -11,11 +11,17 @@ class Movie extends Component {
         movie: [],
         loadingMovies: false,
         loadingActors: false,
-        loadingVideos : false,
+        loadingVideos: false,
         actors: [],
         directors: [],
         visible: 6, // This state is for how many actors rendered.
-        movieVideos: []
+        movieVideos: [],
+    }
+
+    openModal = () => {
+        this.setState({
+            isOpen: true
+        })
     }
 
     componentDidMount() {
@@ -25,7 +31,7 @@ class Movie extends Component {
             ...this.state,
             loadingMovies: true,
             loadingActors: true,
-            loadingVideos : true
+            loadingVideos: true
         })
 
         let moviesEndPoint = `${BASE_URL}/movie/${match.params.movieId}?api_key=${API_KEY}&language=tr`
@@ -71,46 +77,46 @@ class Movie extends Component {
             .then(response => response.json())
             .then((credits) => {
                 // console.log(credits)
-                    const filterDirector = credits.crew.filter(person => person.job === "Director"); // filter directors from all employees
-                    // console.log(credits.crew)
-                    if (filterDirector.length) {
-                        this.setState({
-                            actors: credits.cast,
-                            directors: filterDirector[0].name,
-                            loadingActors: false
-                        })
-                    }
-                    else {
-                        this.setState({
-                            actors: credits.cast,
-                            directors: "Bilgi Yok",
-                            loadingActors: false
-                        })
-                    }             
+                const filterDirector = credits.crew.filter(person => person.job === "Director"); // filter directors from all employees
+                // console.log(credits.crew)
+                if (filterDirector.length) {
+                    this.setState({
+                        actors: credits.cast,
+                        directors: filterDirector[0].name,
+                        loadingActors: false
+                    })
+                }
+                else {
+                    this.setState({
+                        actors: credits.cast,
+                        directors: "Bilgi Yok",
+                        loadingActors: false
+                    })
+                }
             })
     }
 
     getVideosWithId = movieVideosEndPoint => {
         fetch(movieVideosEndPoint)
-        .then(response => response.json())
-        .then((videos) => {
-            if (videos.results.length) {
-                console.log(videos)
-                this.setState({
-                    loadingVideos: false,
-                    movieVideos: videos.results
-                })
-            }
-            else {
-                this.setState({
-                    loadingVideos: false
-                })
-            }
-           
-        })
+            .then(response => response.json())
+            .then((videos) => {
+                if (videos.results.length) {
+                    console.log(videos)
+                    this.setState({
+                        loadingVideos: false,
+                        movieVideos: videos.results
+                    })
+                }
+                else {
+                    this.setState({
+                        loadingVideos: false
+                    })
+                }
+
+            })
     }
 
-    loadMore = () => { 
+    loadMore = () => {
         this.setState({
             visible: this.state.visible + 6,
         })
@@ -118,23 +124,27 @@ class Movie extends Component {
 
     render() {
         const { movie, loadingActors, loadingMovies, actors, directors, visible, movieVideos, loadingVideos } = this.state
-        const { location,  getFavouriteMovies } = this.props
+        const { location, getFavouriteMovies } = this.props
         return (
             <>
                 {loadingActors || loadingMovies || loadingVideos ? <Spinner /> :
-                    (movie && actors.length && movieVideos ) ?
-                        <MovieInfo
-                            movieInfo={movie}
-                            actors={actors}
-                            directors={directors}
-                            searchWord={location.searchWord}
-                            visible = {visible}
-                            loadMore = {this.loadMore}
-                            loading = {(loadingActors || loadingMovies)}
-                            getFavouriteMovies = {getFavouriteMovies}
-                            movieVideos = {movieVideos}
-                            // isSameMovie = {isSameMovie}
-                        /> : null
+                    (movie && actors.length && movieVideos) ?
+                            <MovieInfo
+                                movieInfo={movie}
+                                actors={actors}
+                                directors={directors}
+                                searchWord={location.searchWord}
+                                visible={visible}
+                                loadMore={this.loadMore}
+                                loading={(loadingActors || loadingMovies)}
+                                getFavouriteMovies={getFavouriteMovies}
+                                movieVideos={movieVideos}
+                                // isSameMovie = {isSameMovie}
+
+                            />
+                          
+                        : null
+
                 }
 
                 {

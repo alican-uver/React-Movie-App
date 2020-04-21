@@ -1,0 +1,26 @@
+.carousel-container {
+    background-color: black;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+
+.carousel-control-next, .carousel-control-prev {
+    width: 20% !important;
+    height: 85% !important;
+    opacity: 1 !important;
+}
+
+
+ol.carousel-indicators li {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #fff !important;
+    box-shadow: -9px 10px 36px -13px rgba(0,0,0,1);
+    opacity: .9 !important;
+    margin-right: 15px !important;
+
+}
+
+

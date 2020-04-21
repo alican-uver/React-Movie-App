@@ -11,9 +11,11 @@ class Movie extends Component {
         movie: [],
         loadingMovies: false,
         loadingActors: false,
+        loadingVideos : false,
         actors: [],
         directors: [],
         visible: 6, // This state is for how many actors rendered.
+        movieVideos: []
     }
 
     componentDidMount() {
@@ -22,14 +24,19 @@ class Movie extends Component {
         this.setState({
             ...this.state,
             loadingMovies: true,
-            loadingActors: true
+            loadingActors: true,
+            loadingVideos : true
         })
 
         let moviesEndPoint = `${BASE_URL}/movie/${match.params.movieId}?api_key=${API_KEY}&language=tr`
         let creditsEndPoint = `${BASE_URL}/movie/${match.params.movieId}/credits?api_key=${API_KEY}`;
         this.getMovieWithId(moviesEndPoint);
         this.getDirectorsAndActors(creditsEndPoint);
+
+        let movieVideosEndPoint = `${BASE_URL}/movie/${match.params.movieId}/videos?api_key=${API_KEY}&language=en-US`
+        this.getVideosWithId(movieVideosEndPoint);
     }
+
 
     getMovieWithId = moviesEndPoint => {
         const { match } = this.props;
@@ -63,9 +70,9 @@ class Movie extends Component {
         fetch(creditsEndPoint)
             .then(response => response.json())
             .then((credits) => {
-                console.log(credits)
+                // console.log(credits)
                     const filterDirector = credits.crew.filter(person => person.job === "Director"); // filter directors from all employees
-                    console.log(credits.crew)
+                    // console.log(credits.crew)
                     if (filterDirector.length) {
                         this.setState({
                             actors: credits.cast,
@@ -83,6 +90,26 @@ class Movie extends Component {
             })
     }
 
+    getVideosWithId = movieVideosEndPoint => {
+        fetch(movieVideosEndPoint)
+        .then(response => response.json())
+        .then((videos) => {
+            if (videos.results.length) {
+                console.log(videos)
+                this.setState({
+                    loadingVideos: false,
+                    movieVideos: videos.results
+                })
+            }
+            else {
+                this.setState({
+                    loadingVideos: false
+                })
+            }
+           
+        })
+    }
+
     loadMore = () => { 
         this.setState({
             visible: this.state.visible + 6,
@@ -90,12 +117,12 @@ class Movie extends Component {
     }
 
     render() {
-        const { movie, loadingActors, loadingMovies, actors, directors, visible } = this.state
+        const { movie, loadingActors, loadingMovies, actors, directors, visible, movieVideos, loadingVideos } = this.state
         const { location,  getFavouriteMovies } = this.props
         return (
             <>
-                {loadingActors || loadingMovies ? <Spinner /> :
-                    (movie && actors.length) ?
+                {loadingActors || loadingMovies || loadingVideos ? <Spinner /> :
+                    (movie && actors.length && movieVideos ) ?
                         <MovieInfo
                             movieInfo={movie}
                             actors={actors}
@@ -105,6 +132,7 @@ class Movie extends Component {
                             loadMore = {this.loadMore}
                             loading = {(loadingActors || loadingMovies)}
                             getFavouriteMovies = {getFavouriteMovies}
+                            movieVideos = {movieVideos}
                             // isSameMovie = {isSameMovie}
                         /> : null
                 }

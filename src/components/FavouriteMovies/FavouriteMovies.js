@@ -4,6 +4,7 @@ import { BASE_IMG } from '../../config';
 import no_img from '../elements/img/no_image.jpg';
 import { Container, Row, Col } from 'react-bootstrap';
 import HaveNotFavouriteMovies from '../elements/HaveNotFavouriteMovies/HaveNotFavouriteMovies';
+import PageTitle from '../elements/PageTitle/PageTitle';
 
 class FavouriteMovies extends Component {
 
@@ -15,11 +16,7 @@ class FavouriteMovies extends Component {
         {
           favouriteMovies.length ?
             <React.Fragment>
-              <Row className="my-3">
-                <Col sm={12}>
-                  <h1 className="text-center">Favori Filmlerim</h1>
-                </Col>
-              </Row>
+              <PageTitle title = "favori filmlerim" />
               <Row>
                 {
                   favouriteMovies.map((movie, i) => {

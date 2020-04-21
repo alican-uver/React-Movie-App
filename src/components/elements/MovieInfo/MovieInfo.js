@@ -11,9 +11,11 @@ import Proptypes from 'prop-types';
 import LoadMoreBtn from "../LoadMore/LoadMoreBtn";
 import Spinner from "../Spinner/Spinner";
 import { editReleaseDate } from '../../../Functions/CommonFunctions/commonFunctions';
+import MovieVideos from '../MovieVideos/MovieVideos';
 
-const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading, getFavouriteMovies }) => {
+const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore, loading, getFavouriteMovies, movieVideos }) => {
 
+    console.log(movieVideos)
     return (
         <Container fluid = "xs">
             <Row>
@@ -91,6 +93,15 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                 </Col>
             </Row>
             <Container>
+                    <Row>
+                        <Col sm = {12}>
+                            <MovieVideos 
+                                movieVideos = {movieVideos}
+                            />
+                        </Col>
+                    </Row>
+
+
                     <Row>
                         <Col sm = {12}>
                             <h1 className = "text-center py-4">Oyuncular</h1>

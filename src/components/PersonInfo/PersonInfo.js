@@ -53,6 +53,9 @@ class PersonInfo extends Component { //  depending on the person id, I do reques
           })
         }
         else {
+          this.setState({
+            loadingPersonDetails : false
+          })
           console.log("Bad Request")
         }
 

@@ -90,7 +90,7 @@ class Home extends Component {
                 <Container>
                     <Row>
                         <Col sm = {6} className = "offset-sm-3 text-center">
-                            {searchWord ? <h2 >{searchWord} için bulunan sonuçlar </h2> : <PageTitle  title = "popüler oyuncular"/> }
+                            {searchWord ? <h2 >{searchWord} için bulunan sonuçlar </h2> : <PageTitle  title = "popüler filmler"/> }
                         </Col>
                     </Row>
                     <Row>

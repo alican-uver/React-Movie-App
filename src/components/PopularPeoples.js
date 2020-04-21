@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { BASE_URL, API_KEY, BASE_IMG } from '../config';
-// import ImageFrame from './elements/ImageFrame/ImageFrame';
 import no_img from './elements/img/no_image.jpg';
 import { Row, Col, Container } from 'react-bootstrap';
 import SearchBar from './elements/SearchBar/SearchBar';
 import Actors from './elements/Actors/Actors';
+import PageTitle from './elements/PageTitle/PageTitle';
+import Spinner from './elements/Spinner/Spinner';
 
 class PopularPeoples extends Component {
 
@@ -33,8 +34,8 @@ class PopularPeoples extends Component {
                 console.log(peoples.results);
 
                 this.setState({
-                    persons: [...peoples.results],
-                    loadingPersons: true,
+                    persons: peoples.results,
+                    loadingPersons: false,
                 })
             })
     }
@@ -44,40 +45,41 @@ class PopularPeoples extends Component {
     // }
 
     render() {
-        return (
-            <div>
-                <Container>
-                    <Row>
-                        <Col sm={12}>
-                            <SearchBar
-                                placeHolder="Lütfen Aradığınız Oyuncunun Adını Yazınız.."
-                            />
-                        </Col>
-                    </Row>
-                    <Row className="mt-4">
-                        <Col sm={12} >
-                            <h1 className="text-center">Popüler Oyuncular</h1>
-                        </Col>
-                    </Row>
-                    <Row>
-                        {
-                            this.state.persons.map((person, i) => {
-                                return (
-                                    <Actors
-                                        key={i}
-                                        image={person.profile_path ? `${BASE_IMG}${person.profile_path}` : `${no_img}`}
-                                        clickable={false}
-                                        name={person.name}
-                                        forActors = {false}
-                                        popularPeopleId = {person.id}
-                                    />
-                                )
-                            })
-                        }
-                    </Row>
-                </Container>
+            const { loadingPersons, persons } = this.state;
 
-            </div>
+        return (
+            <React.Fragment>
+                {
+                    loadingPersons ? <Spinner /> : 
+                    (   persons.length &&  
+                        
+                        <Container>
+                        <Row>
+                            <Col sm={12}>
+                                <SearchBar
+                                    placeHolder="Lütfen Aradığınız Oyuncunun Adını Yazınız.."
+                                />
+                            </Col>
+                        </Row>
+                        <PageTitle title = "popüler oyuncular" />
+                        <Row>
+                            {
+                                this.state.persons.map((person, i) => {
+                                    return (
+                                        <Actors
+                                            key={i}
+                                            image={person.profile_path ? `${BASE_IMG}${person.profile_path}` : `${no_img}`}
+                                            name={person.name}
+                                            personId = {person.id}
+                                        />
+                                    )
+                                })
+                            }
+                        </Row>
+                    </Container>
+                    )
+                }
+            </React.Fragment>
         )
     }
 }

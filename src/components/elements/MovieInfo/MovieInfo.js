@@ -68,11 +68,11 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                     
                      <span> 
                     {  
-                        movieInfo.genres.map((genre, i) => {
+                        movieInfo.genres.map((genre) => {
                             return <Badge
                             className = "ml-2 mb-2"
                             variant = "primary" 
-                            key = {i}  
+                            key = {genre.id}  
                             >
                             {genre.name}
                             </Badge>
@@ -95,7 +95,7 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                 </Col>
             </Row>
             <Container>
-                    <Row className = "animated fadeIn delay-2s movie-videos">
+                    <Row className = "animated fadeIn delay-1s movie-videos">
                         <Col sm = {12}>
                             <MovieVideos 
                                 movieVideos = {movieVideos}

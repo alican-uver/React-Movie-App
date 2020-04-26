@@ -95,9 +95,9 @@ class Home extends Component {
                     </Row>
                     <Row>
                         {
-                            movies.map((movie, i) => {
+                            movies.map((movie) => {
                                 return <ImageFrame
-                                    key={i}
+                                    key={movie.id}
                                     image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
                                     clickable={true}
                                     movieId={movie.id}

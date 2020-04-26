@@ -93,9 +93,9 @@ render() {
                   <PageTitle title = "rol aldığı filmler" />
                   <Row>
                     {
-                      personMovies.slice(0, visible).map((movie, i) => {
+                      personMovies.slice(0, visible).map((movie) => {
                         return <ImageFrame
-                          key={i}
+                          key={movie.id}
                           image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
                           personMovieId={movie.id}
                           clickable={false}

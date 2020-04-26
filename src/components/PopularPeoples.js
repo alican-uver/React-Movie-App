@@ -64,10 +64,10 @@ class PopularPeoples extends Component {
                         <PageTitle title = "popüler oyuncular" />
                         <Row>
                             {
-                                this.state.persons.map((person, i) => {
+                                this.state.persons.map((person) => {
                                     return (
                                         <Actors
-                                            key={i}
+                                            key={person.id}
                                             image={person.profile_path ? `${BASE_IMG}${person.profile_path}` : `${no_img}`}
                                             name={person.name}
                                             personId = {person.id}

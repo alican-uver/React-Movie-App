@@ -19,10 +19,10 @@ class FavouriteMovies extends Component {
               <PageTitle title = "favori filmlerim" />
               <Row>
                 {
-                  favouriteMovies.map((movie, i) => {
+                  favouriteMovies.map((movie) => {
                     return (
                       <ImageFrame
-                        key={i}
+                        key={movie.id}
                         movieId={movie.id}
                         image={movie.poster_path ? `${BASE_IMG}${movie.poster_path}` : `${no_img}`}
                         clickable={true}

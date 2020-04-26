@@ -20,9 +20,9 @@ const MovieVideos = ({movieVideos}) => {
                 
             >
                 {
-                movieVideos.map((video, i) => {
+                movieVideos.map((video) => {
                     return (
-                        <Carousel.Item key = {i}
+                        <Carousel.Item key = {video.id}
                         >
                         <Iframe
                             url = {`${VIDEO_URL}${video.key}`}

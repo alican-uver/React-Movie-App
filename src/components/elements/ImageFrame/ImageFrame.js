@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './ImageFrame.css';
@@ -8,7 +8,7 @@ import './ImageFrame.css';
 const ImageFrame = ({ movieId, movieName, searchWord, image, personMovieId, clickable, clearFavouriteMovie }) => {
 
     return (
-        <div className = "col-sm-3 mt-5 animated fadeInLeftBig ">
+        <Col md= {4} xs= {6} lg ={3} className = "mt-5 animated fadeInLeftBig ">
             { clickable ? /* if clickable props is true --> go movie, else go movie again but with personal movie id ! */
                 <React.Fragment>
                     <Link to={{ pathname: `/movie/${movieId}`, movieName: `${movieName}` }}>
@@ -31,7 +31,7 @@ const ImageFrame = ({ movieId, movieName, searchWord, image, personMovieId, clic
                 </Card>
                 </Link>
             }            
-        </div>
+        </Col>
     )
 }
 

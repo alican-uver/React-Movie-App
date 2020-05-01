@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 const Actors = ({ personId, name, image, character}) => {
 
     return (
-              <Col sm = {2} className = "mt-2 animated fadeInLeftBig" >
+              <Col xs = {4} md ={3} lg = {2}  className = "mt-2 animated fadeInLeftBig" >
                     <Link to = {{pathname :`/person/${personId}`, actorName : `${name}`}}>
                     <Card className = "actors-card">
                         <Card.Img variant="top" src={image}/>

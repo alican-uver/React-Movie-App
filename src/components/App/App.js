@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from '../Home/Home';
 import FavouriteMovies from '../FavouriteMovies/FavouriteMovies';
-import PopularPeoples from '../PopularPeoples';
 import Navi from '../Navi/Navi';
 import Movie from '../Movie/Movie';
 import NotFound from '../NotFound/NotFound';
@@ -15,8 +14,6 @@ class App extends Component {
 
     state = {
         favouriteMovies: [],
-        // isSameMovie: false,
-        // loadMovies: false
     }
 
     componentDidMount() {
@@ -25,7 +22,6 @@ class App extends Component {
           this.setState({
             ...this.state,
             favouriteMovies : movies,
-            // loadMovies : true
           })
         }
       }
@@ -87,19 +83,16 @@ class App extends Component {
                                             favouriteMovies={favouriteMovies}
                                             clearAllFavouriteMovies={this.clearAllFavouriteMovies}
                                             clearFavouriteMovie={this.clearFavouriteMovie}
-                                            // loadMovies={loadMovies}
                                         /> 
                                     )
                                 }
                             />
-                            <Route exact path="/popPeoples" component={PopularPeoples} />
                             <Route exact path="/movie/:movieId"
                                 render={
                                     props => (
                                         <Movie
                                             {...props}
                                             getFavouriteMovies={this.getFavouriteMovies}
-                                            // isSameMovie = {this.state.isSameMovie}
                                         />
                                     )
                                 }

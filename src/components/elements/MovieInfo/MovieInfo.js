@@ -38,13 +38,13 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                         : '#000'
                 }}
             >
-                <Col sm={4} className = "pr-0 animated fadeInLeftBig">
+                <Col xs= {12} md={12} lg= {4} className = "pr-0 pl-0 animated fadeInLeftBig">
                     {
                         movieInfo.poster_path ? 
                         <img 
                         src = {`${BASE_IMG}${movieInfo.poster_path}`}
                         alt = "movieImg"
-                        className = "img-fluid" />
+                        className = "img-fluid d-block m-auto" />
                         : 
                         <img 
                         src = {`${no_img_bg}`}
@@ -53,7 +53,7 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                         /> 
                     }
                 </Col>
-                <Col sm={5} className="movieInfo p-4 animated fadeInRightBig">
+                <Col xs= {12} md={12} lg ={5} className="movieInfo p-4 animated fadeInRightBig">
                     <span //Add To Favourites Icon
                     onClick = { () => getFavouriteMovies(movieInfo)}
                     className = "add-to-favourites"> 
@@ -113,7 +113,6 @@ const MovieInfo = ({ movieInfo, searchWord, directors, actors, visible, loadMore
                                 image = {actor.profile_path ? `${BASE_IMG}${actor.profile_path}` : `${no_img}`}
                                 character = {actor.character}
                                 personId = {actor.id}
-                                // movieId = {movieInfo.id}
                                 forActors = {true}
                             />
                         })

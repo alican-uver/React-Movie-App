@@ -8,7 +8,6 @@ import { Row, Col, Container } from 'react-bootstrap';
 import no_img from '../elements/img/no_image.jpg';
 import PageTitle from '../elements/PageTitle/PageTitle';
 
-
 class Home extends Component {
 
     state = {
@@ -67,7 +66,7 @@ class Home extends Component {
         fetch(endPoint)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
 
                 this.setState({
                     movies: [...this.state.movies, ...data.results],

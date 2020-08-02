@@ -1,3 +1,2 @@
-### The main components work without errors. I will continue to develop. 
-
-## live : https://alcnuvr-react-movie-app.netlify.app
+- #### This project is the first project I have developed since I met react-js. It is aimed at filtering movies based on searches by users, showing the player lists and movie trailers within the movies via data retrieval with an api that has too many movies in it and continues to be updated constantly. React-bootstrap was used in general at the interface of the project. React-router was used and attempts were made to obtain reusable component structure.
+### Live : https://alcnuvr-react-movie-app.netlify.app
